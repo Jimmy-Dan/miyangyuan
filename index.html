@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蜜养源 - 蜂蜜产品溯源平台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script>
+        tailwind.config={
+            theme:{
+                extend:{
+                    colors:{
+                        primary:'#F2A900',
+                        secondary:'#8BC34A',
+                        honey: {
+                            50: '#FFF8E1',
+                            100: '#FFECB3',
+                            200: '#FFE082',
+                            300: '#FFD54F',
+                            400: '#FFCA28',
+                            500: '#FFC107',
+                            600: '#FFB300',
+                            700: '#FFA000',
+                            800: '#FF8F00',
+                            900: '#FF6F00',
+                        },
+                        nature: {
+                            50: '#F1F8E9',
+                            100: '#DCEDC8',
+                            200: '#C5E1A5',
+                            300: '#AED581',
+                            400: '#9CCC65',
+                            500: '#8BC34A',
+                            600: '#7CB342',
+                            700: '#689F38',
+                            800: '#558B2F',
+                            900: '#33691E',
+                        }
+                    },
+                    borderRadius:{
+                        'none':'0px',
+                        'sm':'4px',
+                        DEFAULT:'8px',
+                        'md':'12px',
+                        'lg':'16px',
+                        'xl':'20px',
+                        '2xl':'24px',
+                        '3xl':'32px',
+                        'full':'9999px',
+                        'button':'8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        
+        .search-container {
+            background-image: url('https://readdy.ai/api/search-image?query=beautiful%20honey%20farm%20landscape%20with%20beehives%20in%20a%20flowering%20meadow%2C%20golden%20honey%20jars%2C%20mountains%20in%20background%2C%20soft%20morning%20light%2C%20natural%20organic%20setting%2C%20high%20quality%20professional%20photography&width=1920&height=600&seq=1&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .search-overlay {
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.4));
+        }
+        
+        .honey-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .honey-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(242, 169, 0, 0.1), 0 10px 10px -5px rgba(242, 169, 0, 0.04);
+        }
+        
+        .farm-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .farm-card:hover {
+            transform: scale(1.02);
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(242, 169, 0, 0.2);
+        }
+        
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+        
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #F2A900;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+        
+        .tab-active {
+            color: #F2A900;
+            border-bottom: 2px solid #F2A900;
+        }
+        
+        .eco-rating {
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .eco-rating i {
+            color: #8BC34A;
+            margin-right: 1px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<!-- 公共头部组件 -->
+<div id="header-placeholder"></div>
+
+    <main>
+        <!-- 智能搜索框 -->
+        <section class="search-container relative">
+            <div class="search-overlay w-full py-20 md:py-32">
+                <div class="container mx-auto px-4">
+                    <div class="max-w-3xl mx-auto">
+                        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">探寻蜂蜜的原始足迹</h1>
+                        <p class="text-lg text-gray-700 mb-8">扫码或输入溯源码，了解蜂蜜从蜜蜂到餐桌的完整旅程</p>
+                        
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <div class="flex items-center mb-4">
+                                <button id="search-tab-code" class="tab-active px-4 py-2 font-medium text-gray-700 focus:outline-none">溯源码查询</button>
+                                <button id="search-tab-scan" class="px-4 py-2 font-medium text-gray-500 focus:outline-none">扫码查询</button>
+                            </div>
+                            
+                            <div id="search-content-code" class="relative">
+                                <div class="flex">
+                                    <div class="relative flex-grow">
+                                        <input type="text" placeholder="请输入蜂蜜溯源码..." class="w-full pl-12 pr-4 py-4 rounded-l-button border-none bg-gray-100 text-gray-800 placeholder-gray-400">
+                                        <div class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+                                            <i class="ri-search-line"></i>
+                                        </div>
+                                    </div>
+                                    <button class="bg-primary hover:bg-amber-500 text-white px-8 py-4 rounded-r-button font-medium transition-colors whitespace-nowrap !rounded-button">
+                                        查询
+                                    </button>
+                                </div>
+                                <div class="mt-3 text-sm text-gray-500 flex items-center">
+                                    <span>最近查询:</span>
+                                    <div class="ml-2 space-x-2">
+                                        <span class="inline-block px-2 py-1 bg-gray-100 rounded-full hover:bg-gray-200 cursor-pointer">HN2025052901</span>
+                                        <span class="inline-block px-2 py-1 bg-gray-100 rounded-full hover:bg-gray-200 cursor-pointer">LB2025052103</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="search-content-scan" class="hidden">
+                                <div class="bg-gray-100 rounded p-8 flex flex-col items-center justify-center">
+                                    <div class="w-16 h-16 flex items-center justify-center text-primary mb-4">
+                                        <i class="ri-qr-scan-line ri-3x"></i>
+                                    </div>
+                                    <p class="text-gray-600 mb-4 text-center">请将蜂蜜包装上的二维码对准摄像头</p>
+                                    <button class="bg-primary hover:bg-amber-500 text-white px-6 py-3 rounded-button font-medium transition-colors whitespace-nowrap !rounded-button">
+                                        打开相机
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 蜜境精选推荐 -->
+        <section class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900">蜜境精选推荐</h2>
+                    <a href="#" class="text-primary flex items-center hover:underline">
+                        查看全部
+                        <div class="w-4 h-4 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="relative">
+                    <div class="overflow-hidden">
+                        <div class="flex transition-transform duration-300" id="carousel-container">
+                            <!-- 蜂蜜产品1 -->
+                            <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                                <div class="honey-card bg-white rounded-lg overflow-hidden shadow-md">
+                                    <div class="h-56 overflow-hidden">
+                                        <img src="https://th.bing.com/th/id/OIP.tbvoewQf0_7ItG_VffIwZwHaE8?r=0&rs=1&pid=ImgDetMain" alt="长白山椴树蜜" class="w-full h-full object-cover object-top">
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <h3 class="text-lg font-semibold text-gray-900">长白山椴树蜜</h3>
+                                            <div class="eco-rating">
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-leaf-fill"></i>
+                                                </div>
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-leaf-fill"></i>
+                                                </div>
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-leaf-fill"></i>
+                                                </div>
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-leaf-fill"></i>
+                                                </div>
+                                                <div class="w-4 h-4 flex items-center justify-center text-gray-300">
+                                                    <i class="ri-leaf-line"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="text-gray-600 text-sm mb-3">来自长白山原始森林，椴树花蜜的纯净之选</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-primary font-bold">¥ 198.00</span>
+                                            <button class="bg-primary hover:bg-amber-500 text-white px-4 py-2 rounded-button text-sm transition-colors whitespace-nowrap !rounded-button">查看详情</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 蜂蜜产品2 -->
+                            <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                                <div class="honey-card bg-white rounded-lg overflow-hidden shadow-md">
+                                    <div class="h-56 overflow-hidden">
+                                        <img src="https://cbu01.alicdn.com/img/ibank/2020/748/122/17930221847_1363332564.jpg" alt="青藏高原野花蜜" class="w-full h-full object-cover object-top">
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <h3 class="text-lg font-semibold text-gray-900">青藏高原野花蜜</h3>
+                                            <div class="eco-rating">
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-leaf-fill"></i>
+                                                </div>
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-leaf-fill"></i>
+                                                </div>
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-leaf-fill"></i>
+                                                </div>
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-leaf-fill"></i>
+                                                </div>
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-leaf-fill"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="text-gray-600 text-sm mb-3">海拔4000米以上高原野花酿造，口感独特醇厚</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-primary font-bold">¥ 268.00</span>
+                                            <button class="bg-primary hover:bg-amber-500 text-white px-4 py-2 rounded-button text-sm transition-colors whitespace-nowrap !rounded-button">查看详情</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 蜂蜜产品3 -->
+                            <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                                <div class="honey-card bg-white rounded-lg overflow-hidden shadow-md">
+                                    <div class="h-56 overflow-hidden">
+                                        <img src="https://cbu01.alicdn.com/img/ibank/2016/444/165/3665561444_170154041.jpg" alt="黄陂荆蜜" class="w-full h-full object-cover object-top">
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <h3 class="text-lg font-semibold text-gray-900">黄陂荆蜜</h3>
+                                            <div class="eco-rating">
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-leaf-fill"></i>
+                                                </div>
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-leaf-fill"></i>
+                                                </div>
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-leaf-fill"></i>
+                                                </div>
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-leaf-fill"></i>
+                                                </div>
+                                                <div class="w-4 h-4 flex items-center justify-center text-gray-300">
+                                                    <i class="ri-leaf-line"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="text-gray-600 text-sm mb-3">UMF15+认证，天然抗菌特性，健康养生首选</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-primary font-bold">¥ 188.00</span>
+                                            <button class="bg-primary hover:bg-amber-500 text-white px-4 py-2 rounded-button text-sm transition-colors whitespace-nowrap !rounded-button">查看详情</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 轮播控制按钮 -->
+                    <button id="carousel-prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1/2 bg-white w-10 h-10 rounded-full shadow-md flex items-center justify-center text-gray-600 hover:text-primary focus:outline-none z-10">
+                        <div class="w-5 h-5 flex items-center justify-center">
+                            <i class="ri-arrow-left-s-line"></i>
+                        </div>
+                    </button>
+                    <button id="carousel-next" class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1/2 bg-white w-10 h-10 rounded-full shadow-md flex items-center justify-center text-gray-600 hover:text-primary focus:outline-none z-10">
+                        <div class="w-5 h-5 flex items-center justify-center">
+                            <i class="ri-arrow-right-s-line"></i>
+                        </div>
+                    </button>
+                    
+                    <!-- 轮播指示器 -->
+                    <div class="flex justify-center mt-6">
+                        <button class="w-2 h-2 rounded-full bg-primary mx-1"></button>
+                        <button class="w-2 h-2 rounded-full bg-gray-300 mx-1"></button>
+                        <button class="w-2 h-2 rounded-full bg-gray-300 mx-1"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 实时蜂场动态 -->
+        <section class="py-12 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900">实时蜂场动态</h2>
+                    <a href="#" class="text-primary flex items-center hover:underline">
+                        查看全部
+                        <div class="w-4 h-4 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- 蜂场1 -->
+                    <div class="farm-card bg-white rounded-lg overflow-hidden shadow-md">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://readdy.ai/api/search-image?query=beautiful%20apiary%20in%20mountain%20landscape%2C%20beehives%20with%20bees%20flying%20around%2C%20sunny%20day%2C%20high%20quality%20photography%2C%20natural%20setting&width=600&height=400&seq=5&orientation=landscape" alt="长白山蜂场" class="w-full h-full object-cover object-top">
+                            <div class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full px-3 py-1 text-xs font-medium text-green-600 flex items-center">
+                                <div class="w-3 h-3 flex items-center justify-center mr-1">
+                                    <i class="ri-record-circle-fill"></i>
+                                </div>
+                                实时直播中
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">长白山原始森林蜂场</h3>
+                            
+                            <div class="grid grid-cols-2 gap-3 mb-4">
+                                <div class="bg-gray-50 rounded p-3">
+                                    <p class="text-xs text-gray-500 mb-1">环境温度</p>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 flex items-center justify-center text-amber-500 mr-1">
+                                            <i class="ri-temp-hot-line"></i>
+                                        </div>
+                                        <span class="text-gray-900 font-medium">23.5°C</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded p-3">
+                                    <p class="text-xs text-gray-500 mb-1">环境湿度</p>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 flex items-center justify-center text-blue-500 mr-1">
+                                            <i class="ri-drop-line"></i>
+                                        </div>
+                                        <span class="text-gray-900 font-medium">68%</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded p-3">
+                                    <p class="text-xs text-gray-500 mb-1">蜂箱数量</p>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 flex items-center justify-center text-primary mr-1">
+                                            <i class="ri-home-4-line"></i>
+                                        </div>
+                                        <span class="text-gray-900 font-medium">128 箱</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded p-3">
+                                    <p class="text-xs text-gray-500 mb-1">蜜蜂活跃度</p>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 flex items-center justify-center text-green-500 mr-1">
+                                            <i class="ri-pulse-line"></i>
+                                        </div>
+                                        <span class="text-gray-900 font-medium">高</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="w-full bg-white border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-button text-sm transition-colors whitespace-nowrap !rounded-button flex items-center justify-center">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-live-line"></i>
+                                </div>
+                                进入云游直播
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 蜂场2 -->
+                    <div class="farm-card bg-white rounded-lg overflow-hidden shadow-md">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://readdy.ai/api/search-image?query=apiary%20in%20lush%20green%20meadow%20with%20wildflowers%2C%20beehives%20arranged%20in%20rows%2C%20bees%20flying%20around%2C%20sunny%20day%2C%20high%20quality%20photography&width=600&height=400&seq=6&orientation=landscape" alt="云南高黎贡山蜂场" class="w-full h-full object-cover object-top">
+                            <div class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full px-3 py-1 text-xs font-medium text-green-600 flex items-center">
+                                <div class="w-3 h-3 flex items-center justify-center mr-1">
+                                    <i class="ri-record-circle-fill"></i>
+                                </div>
+                                实时直播中
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">云南高黎贡山蜂场</h3>
+                            
+                            <div class="grid grid-cols-2 gap-3 mb-4">
+                                <div class="bg-gray-50 rounded p-3">
+                                    <p class="text-xs text-gray-500 mb-1">环境温度</p>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 flex items-center justify-center text-amber-500 mr-1">
+                                            <i class="ri-temp-hot-line"></i>
+                                        </div>
+                                        <span class="text-gray-900 font-medium">25.8°C</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded p-3">
+                                    <p class="text-xs text-gray-500 mb-1">环境湿度</p>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 flex items-center justify-center text-blue-500 mr-1">
+                                            <i class="ri-drop-line"></i>
+                                        </div>
+                                        <span class="text-gray-900 font-medium">72%</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded p-3">
+                                    <p class="text-xs text-gray-500 mb-1">蜂箱数量</p>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 flex items-center justify-center text-primary mr-1">
+                                            <i class="ri-home-4-line"></i>
+                                        </div>
+                                        <span class="text-gray-900 font-medium">96 箱</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded p-3">
+                                    <p class="text-xs text-gray-500 mb-1">蜜蜂活跃度</p>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 flex items-center justify-center text-green-500 mr-1">
+                                            <i class="ri-pulse-line"></i>
+                                        </div>
+                                        <span class="text-gray-900 font-medium">中高</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="w-full bg-white border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-button text-sm transition-colors whitespace-nowrap !rounded-button flex items-center justify-center">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-live-line"></i>
+                                </div>
+                                进入云游直播
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 蜂场3 -->
+                    <div class="farm-card bg-white rounded-lg overflow-hidden shadow-md">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://readdy.ai/api/search-image?query=modern%20apiary%20with%20technologically%20advanced%20beehives%2C%20digital%20monitoring%20equipment%2C%20bees%20flying%20around%2C%20sunny%20day%2C%20high%20quality%20photography&width=600&height=400&seq=7&orientation=landscape" alt="青海湖畔蜂场" class="w-full h-full object-cover object-top">
+                            <div class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full px-3 py-1 text-xs font-medium text-gray-500 flex items-center">
+                                <div class="w-3 h-3 flex items-center justify-center mr-1">
+                                    <i class="ri-time-line"></i>
+                                </div>
+                                今日 18:00 开播
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">青海湖畔高原蜂场</h3>
+                            
+                            <div class="grid grid-cols-2 gap-3 mb-4">
+                                <div class="bg-gray-50 rounded p-3">
+                                    <p class="text-xs text-gray-500 mb-1">环境温度</p>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 flex items-center justify-center text-amber-500 mr-1">
+                                            <i class="ri-temp-hot-line"></i>
+                                        </div>
+                                        <span class="text-gray-900 font-medium">18.2°C</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded p-3">
+                                    <p class="text-xs text-gray-500 mb-1">环境湿度</p>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 flex items-center justify-center text-blue-500 mr-1">
+                                            <i class="ri-drop-line"></i>
+                                        </div>
+                                        <span class="text-gray-900 font-medium">55%</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded p-3">
+                                    <p class="text-xs text-gray-500 mb-1">蜂箱数量</p>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 flex items-center justify-center text-primary mr-1">
+                                            <i class="ri-home-4-line"></i>
+                                        </div>
+                                        <span class="text-gray-900 font-medium">82 箱</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded p-3">
+                                    <p class="text-xs text-gray-500 mb-1">蜜蜂活跃度</p>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 flex items-center justify-center text-green-500 mr-1">
+                                            <i class="ri-pulse-line"></i>
+                                        </div>
+                                        <span class="text-gray-900 font-medium">中</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="w-full bg-white border border-gray-300 text-gray-500 px-4 py-2 rounded-button text-sm whitespace-nowrap !rounded-button flex items-center justify-center cursor-not-allowed">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-notification-line"></i>
+                                </div>
+                                开播提醒
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 非遗文化入口 -->
+        <section class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-6xl mx-auto bg-gradient-to-r from-honey-50 to-nature-50 rounded-lg overflow-hidden shadow-md">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">探索千年养蜂非遗文化</h2>
+                            <p class="text-gray-700 mb-6">通过AR技术，体验传统养蜂技艺的魅力，了解蜜蜂与人类的共生智慧</p>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary flex-shrink-0 mt-1">
+                                        <i class="ri-camera-line"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="font-medium text-gray-900">扫描包装，启动AR体验</h3>
+                                        <p class="text-sm text-gray-600">对准蜂蜜包装上的特殊图案，开启沉浸式养蜂文化之旅</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary flex-shrink-0 mt-1">
+                                        <i class="ri-movie-line"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="font-medium text-gray-900">观看蜂农故事短片</h3>
+                                        <p class="text-sm text-gray-600">聆听来自不同地区蜂农的真实故事，感受匠人精神</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary flex-shrink-0 mt-1">
+                                        <i class="ri-map-pin-line"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="font-medium text-gray-900">预约蜜源地采蜜体验</h3>
+                                        <p class="text-sm text-gray-600">亲临蜜源地，参与采蜜过程，体验传统养蜂技艺</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="mt-8 bg-primary hover:bg-amber-500 text-white px-6 py-3 rounded-button font-medium transition-colors inline-flex items-center whitespace-nowrap !rounded-button">
+                                <div class="w-5 h-5 flex items-center justify-center mr-2">
+                                    <i class="ri-augmented-reality-line"></i>
+                                </div>
+                                开启AR体验
+                            </button>
+                        </div>
+                        <div class="md:w-1/2">
+                            <img src="https://readdy.ai/api/search-image?query=traditional%20beekeeper%20in%20protective%20suit%20working%20with%20beehives%2C%20transferring%20knowledge%20to%20younger%20generation%2C%20cultural%20heritage%2C%20high%20quality%20photography%2C%20documentary%20style&width=600&height=600&seq=8&orientation=portrait" alt="非遗养蜂文化" class="w-full h-full object-cover object-top">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 蜜境甄选 -->
+        <section class="py-12 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900">蜜境甄选</h2>
+                    <a href="#" class="text-primary flex items-center hover:underline">
+                        查看全部
+                        <div class="w-4 h-4 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- 分类标签 -->
+                <div class="flex overflow-x-auto pb-4 mb-6 scrollbar-hide">
+                    <button class="flex-shrink-0 bg-primary text-white px-4 py-2 rounded-full mr-3 text-sm font-medium whitespace-nowrap !rounded-button">全部蜜源</button>
+                    <button class="flex-shrink-0 bg-white text-gray-700 px-4 py-2 rounded-full mr-3 text-sm font-medium whitespace-nowrap !rounded-button">高原蜜源</button>
+                    <button class="flex-shrink-0 bg-white text-gray-700 px-4 py-2 rounded-full mr-3 text-sm font-medium whitespace-nowrap !rounded-button">森林蜜源</button>
+                    <button class="flex-shrink-0 bg-white text-gray-700 px-4 py-2 rounded-full mr-3 text-sm font-medium whitespace-nowrap !rounded-button">草原蜜源</button>
+                    <button class="flex-shrink-0 bg-white text-gray-700 px-4 py-2 rounded-full mr-3 text-sm font-medium whitespace-nowrap !rounded-button">花海蜜源</button>
+                    <button class="flex-shrink-0 bg-white text-gray-700 px-4 py-2 rounded-full mr-3 text-sm font-medium whitespace-nowrap !rounded-button">进口蜜源</button>
+                </div>
+                
+                <!-- 产品列表 -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- 产品1 -->
+                    <div class="honey-card bg-white rounded-lg overflow-hidden shadow-md">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://th.bing.com/th/id/OIP.tbvoewQf0_7ItG_VffIwZwHaE8?r=0&rs=1&pid=ImgDetMain" alt="黑龙江椴树蜜" class="w-full h-full object-cover object-top">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-semibold text-gray-900">黑龙江椴树蜜</h3>
+                                <div class="eco-rating">
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center text-gray-300">
+                                        <i class="ri-leaf-line"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-600 mb-3">原始森林椴树花蜜，口感醇厚回甘</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-bold">¥ 168.00</span>
+                                <button class="bg-primary hover:bg-amber-500 text-white px-3 py-1 rounded-button text-xs transition-colors whitespace-nowrap !rounded-button">加入购物车</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 产品2 -->
+                    <div class="honey-card bg-white rounded-lg overflow-hidden shadow-md">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://cbu01.alicdn.com/img/ibank/2020/748/122/17930221847_1363332564.jpg" alt="青海高原野花蜜" class="w-full h-full object-cover object-top">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-semibold text-gray-900">青海高原野花蜜</h3>
+                                <div class="eco-rating">
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-600 mb-3">高海拔野花酿造，花香浓郁</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-bold">¥ 198.00</span>
+                                <button class="bg-primary hover:bg-amber-500 text-white px-3 py-1 rounded-button text-xs transition-colors whitespace-nowrap !rounded-button">加入购物车</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 产品3 -->
+                    <div class="honey-card bg-white rounded-lg overflow-hidden shadow-md">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://th.bing.com/th/id/OIP.UQQoydqU8NqVRwiln_TG6wHaFj?r=0&rs=1&pid=ImgDetMain" alt="四川山花蜜" class="w-full h-full object-cover object-top">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-semibold text-gray-900">四川山花蜜</h3>
+                                <div class="eco-rating">
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center text-gray-300">
+                                        <i class="ri-leaf-line"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center text-gray-300">
+                                        <i class="ri-leaf-line"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-600 mb-3">多种山花混合蜜，风味独特</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-bold">¥ 138.00</span>
+                                <button class="bg-primary hover:bg-amber-500 text-white px-3 py-1 rounded-button text-xs transition-colors whitespace-nowrap !rounded-button">加入购物车</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 产品4 -->
+                    <div class="honey-card bg-white rounded-lg overflow-hidden shadow-md">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://cbu01.alicdn.com/img/ibank/2016/444/165/3665561444_170154041.jpg" alt="黄陂荆蜜" class="w-full h-full object-cover object-top">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-semibold text-gray-900">黄陂荆蜜</h3>
+                                <div class="eco-rating">
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-leaf-fill"></i>
+                                    </div>
+                                    <div class="w-4 h-4 flex items-center justify-center text-gray-300">
+                                        <i class="ri-leaf-line"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-600 mb-3">UMF15+认证，抗菌特性</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-bold">¥ 188.00</span>
+                                <button class="bg-primary hover:bg-amber-500 text-white px-3 py-1 rounded-button text-xs transition-colors whitespace-nowrap !rounded-button">加入购物车</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 蜜境共生 -->
+        <section class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-6xl mx-auto bg-gradient-to-r from-nature-50 to-honey-50 rounded-lg overflow-hidden shadow-md">
+                    <div class="flex flex-col md:flex-row-reverse">
+                        <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">蜜境共生计划</h2>
+                            <p class="text-gray-700 mb-6">认养一箱蜜蜂，守护生态多样性，收获专属于你的纯净蜂蜜</p>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary flex-shrink-0 mt-1">
+                                        <i class="ri-shield-check-line"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="font-medium text-gray-900">专属蜂箱认养</h3>
+                                        <p class="text-sm text-gray-600">获得专属ID，实时监控蜂箱状态，定期收到蜂农报告</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary flex-shrink-0 mt-1">
+                                        <i class="ri-gift-line"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="font-medium text-gray-900">专属蜂蜜收获</h3>
+                                        <p class="text-sm text-gray-600">每季度收到来自你认养蜂箱的纯净蜂蜜，全程可溯源</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary flex-shrink-0 mt-1">
+                                        <i class="ri-plant-line"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="font-medium text-gray-900">生态贡献证书</h3>
+                                        <p class="text-sm text-gray-600">获得专属NFT证书，记录你对生物多样性保护的贡献</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="mt-8 bg-primary hover:bg-amber-500 text-white px-6 py-3 rounded-button font-medium transition-colors inline-flex items-center whitespace-nowrap !rounded-button">
+                                <div class="w-5 h-5 flex items-center justify-center mr-2">
+                                    <i class="ri-heart-line"></i>
+                                </div>
+                                立即认养
+                            </button>
+                        </div>
+                        <div class="md:w-1/2">
+                            <img src="https://readdy.ai/api/search-image?query=modern%20beekeeper%20in%20protective%20suit%20working%20with%20beehives%2C%20digital%20monitoring%20equipment%2C%20sustainable%20beekeeping%2C%20high%20quality%20photography%2C%20documentary%20style&width=600&height=600&seq=13&orientation=portrait" alt="蜜境共生计划" class="w-full h-full object-cover object-top">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>    <!-- 公共页脚组件 -->
+    <div id="footer-placeholder"></div>    <!-- 引入外部JS文件 -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/swiper.js"></script>
+    <script src="assets/js/mock-data.js"></script>
+    
+    <script>
+        // 加载公共组件
+        loadComponent('header-placeholder', 'components/header.html');
+        loadComponent('footer-placeholder', 'components/footer.html');
+    </script>
+    
+    <script id="searchTabsScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchTabCode = document.getElementById('search-tab-code');
+            const searchTabScan = document.getElementById('search-tab-scan');
+            const searchContentCode = document.getElementById('search-content-code');
+            const searchContentScan = document.getElementById('search-content-scan');
+            
+            searchTabCode.addEventListener('click', function() {
+                searchTabCode.classList.add('tab-active');
+                searchTabScan.classList.remove('tab-active');
+                searchTabCode.classList.remove('text-gray-500');
+                searchTabCode.classList.add('text-gray-700');
+                searchTabScan.classList.add('text-gray-500');
+                searchTabScan.classList.remove('text-gray-700');
+                searchContentCode.classList.remove('hidden');
+                searchContentScan.classList.add('hidden');
+            });
+            
+            searchTabScan.addEventListener('click', function() {
+                searchTabScan.classList.add('tab-active');
+                searchTabCode.classList.remove('tab-active');
+                searchTabScan.classList.remove('text-gray-500');
+                searchTabScan.classList.add('text-gray-700');
+                searchTabCode.classList.add('text-gray-500');
+                searchTabCode.classList.remove('text-gray-700');
+                searchContentScan.classList.remove('hidden');
+                searchContentCode.classList.add('hidden');
+            });
+        });
+    </script>
+
+    <script id="carouselScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('carousel-container');
+            const prevBtn = document.getElementById('carousel-prev');
+            const nextBtn = document.getElementById('carousel-next');
+            let currentIndex = 0;
+            const itemWidth = 100; // 百分比
+            const itemCount = 3; // 轮播项数量
+            
+            function updateCarousel() {
+                const translateValue = -currentIndex * itemWidth / itemCount;
+                container.style.transform = `translateX(${translateValue}%)`;
+            }
+            
+            prevBtn.addEventListener('click', function() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                if (currentIndex < itemCount - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

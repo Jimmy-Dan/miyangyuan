@@ -1,0 +1,115 @@
+/* 蜜养源平台响应式样式 */
+
+/* 小型手机 */
+@media (max-width: 360px) {
+    .container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.25rem;
+    }
+    
+    .search-overlay {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+}
+
+/* 手机设备 */
+@media (max-width: 639px) {
+    .honey-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .search-overlay {
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8));
+    }
+    
+    .page-header {
+        padding: 1.5rem 0;
+    }
+    
+    footer {
+        text-align: center;
+    }
+    
+    footer .flex {
+        flex-direction: column;
+    }
+    
+    footer .space-x-6 {
+        margin-top: 1rem;
+    }
+}
+
+/* 平板设备 */
+@media (min-width: 640px) and (max-width: 1023px) {
+    .grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+    .search-overlay {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+}
+
+/* 平板和桌面 */
+@media (min-width: 768px) {
+    .md\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    
+    .md\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* 桌面设备 */
+@media (min-width: 1024px) {
+    .lg\:grid-cols-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    
+    .lg\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* 大屏幕设备 */
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1200px;
+    }
+    
+    .xl\:grid-cols-5 {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+/* 适配不同设备的导航栏 */
+@media (max-width: 767px) {
+    .md\:hidden {
+        display: none;
+    }
+    
+    .md\:flex {
+        display: flex;
+    }
+}
+
+@media (min-width: 768px) {
+    .hidden.md\:flex {
+        display: flex;
+    }
+    
+    .md\:hidden {
+        display: none;
+    }
+}

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蜜境甄选 - 蜜养源</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script src="assets/js/mock-data.js"></script>
+    <script>
+        tailwind.config={
+            theme:{
+                extend:{
+                    colors:{
+                        primary:'#F2A900',
+                        secondary:'#8BC34A',
+                        honey: {
+                            50: '#FFF8E1',
+                            100: '#FFECB3',
+                            200: '#FFE082',
+                            300: '#FFD54F',
+                            400: '#FFCA28',
+                            500: '#FFC107',
+                            600: '#FFB300',
+                            700: '#FFA000',
+                            800: '#FF8F00',
+                            900: '#FF6F00',
+                        },
+                        nature: {
+                            50: '#F1F8E9',
+                            100: '#DCEDC8',
+                            200: '#C5E1A5',
+                            300: '#AED581',
+                            400: '#9CCC65',
+                            500: '#8BC34A',
+                            600: '#7CB342',
+                            700: '#689F38',
+                            800: '#558B2F',
+                            900: '#33691E',
+                        }
+                    },
+                    borderRadius:{
+                        'none':'0px',
+                        'sm':'4px',
+                        DEFAULT:'8px',
+                        'md':'12px',
+                        'lg':'16px',
+                        'xl':'20px',
+                        '2xl':'24px',
+                        '3xl':'32px',
+                        'full':'9999px',
+                        'button':'8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .search-suggestions {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .swiper-container {
+            overflow: hidden;
+        }
+        .swiper-wrapper {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+        .swiper-slide {
+            flex-shrink: 0;
+            width: 100%;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal.show {
+            display: block;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 95%;
+            max-width: 1200px;
+            max-height: 95vh;
+            overflow-y: auto;
+        }
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        .timeline-item {
+            position: relative;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: currentColor;
+            box-shadow: 0 0 0 0.25rem rgba(0,0,0,0.1);
+        }
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            left: -0.75rem;
+            top: 0;
+            bottom: -1.5rem;
+            width: 2px;
+            background-color: currentColor;
+            opacity: 0.3;
+        }
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        .timeline-item:hover {
+            transform: translateX(0.5rem);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .fade-enter {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 公共头部组件 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- 页面头部banner -->
+        <section class="bg-gradient-to-r from-honey-100 to-nature-100 py-16">
+            <div class="container mx-auto px-4">
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">蜜境甄选</h1>
+                    <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">精选来自世界各地的优质蜂蜜，每一滴都承载着大自然的纯净馈赠</p>
+                    
+                    <!-- 智能搜索框 -->
+                    <div class="max-w-2xl mx-auto relative">
+                        <div class="relative">
+                            <input type="text" 
+                                   id="searchInput" 
+                                   placeholder="搜索蜂蜜产品名称、蜜源地或输入蜂蜜ID..."
+                                   class="w-full px-6 py-4 pr-12 text-lg border-2 border-honey-300 rounded-2xl focus:outline-none focus:border-primary shadow-lg">
+                            <button id="searchBtn" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary hover:bg-honey-600 text-white p-3 rounded-xl transition-colors">
+                                <i class="ri-search-line text-xl"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- 搜索建议下拉框 -->
+                        <div id="searchSuggestions" class="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg mt-2 search-suggestions hidden">
+                            <!-- 搜索建议将动态填充 -->
+                        </div>
+                        
+                        <!-- 历史搜索记录 -->
+                        <div id="searchHistory" class="mt-4 hidden">
+                            <p class="text-sm text-gray-600 mb-2">历史搜索：</p>
+                            <div class="flex flex-wrap gap-2" id="historyTags">
+                                <!-- 历史搜索标签将动态填充 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 筛选和排序 -->
+        <section class="bg-white border-b border-gray-200 sticky top-20 z-40">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <!-- 筛选选项 -->
+                    <div class="flex flex-wrap items-center space-x-4">
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium text-gray-700">蜜源地：</label>
+                            <select class="px-3 py-2 border border-gray-300 rounded-button text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option value="">全部地区</option>
+                                <option value="northeast">东北地区</option>
+                                <option value="southwest">西南地区</option>
+                                <option value="northwest">西北地区</option>
+                                <option value="international">进口蜜源</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium text-gray-700">蜜种：</label>
+                            <select class="px-3 py-2 border border-gray-300 rounded-button text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option value="">全部类型</option>
+                                <option value="linden">椴树蜜</option>
+                                <option value="wildflower">野花蜜</option>
+                                <option value="acacia">洋槐蜜</option>
+                                <option value="manuka">麦卢卡蜜</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium text-gray-700">价格：</label>
+                            <select class="px-3 py-2 border border-gray-300 rounded-button text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option value="">全部价格</option>
+                                <option value="0-100">¥0-100</option>
+                                <option value="100-200">¥100-200</option>
+                                <option value="200-300">¥200-300</option>
+                                <option value="300+">¥300以上</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- 排序选项 -->
+                    <div class="flex items-center space-x-2">
+                        <label class="text-sm font-medium text-gray-700">排序：</label>
+                        <select class="px-3 py-2 border border-gray-300 rounded-button text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                            <option value="default">默认排序</option>
+                            <option value="price-asc">价格从低到高</option>
+                            <option value="price-desc">价格从高到低</option>
+                            <option value="rating">好评度</option>
+                            <option value="sales">销量</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 产品展示区域 -->
+        <section class="py-8">
+            <div class="container mx-auto px-4">
+                <!-- 产品网格 -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="products-grid">
+                    <!-- 产品将通过JavaScript动态加载 -->
+                </div>
+
+                <!-- 分页 -->
+                <div class="flex justify-center mt-12">
+                    <nav class="flex items-center space-x-2">
+                        <button class="px-3 py-2 rounded-button border border-gray-300 text-gray-500 hover:bg-gray-50" disabled>
+                            <i class="ri-arrow-left-s-line"></i>
+                        </button>
+                        <button class="px-3 py-2 rounded-button bg-primary text-white">1</button>
+                        <button class="px-3 py-2 rounded-button border border-gray-300 text-gray-700 hover:bg-gray-50">2</button>
+                        <button class="px-3 py-2 rounded-button border border-gray-300 text-gray-700 hover:bg-gray-50">3</button>
+                        <span class="px-3 py-2 text-gray-500">...</span>
+                        <button class="px-3 py-2 rounded-button border border-gray-300 text-gray-700 hover:bg-gray-50">10</button>
+                        <button class="px-3 py-2 rounded-button border border-gray-300 text-gray-700 hover:bg-gray-50">
+                            <i class="ri-arrow-right-s-line"></i>
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 产品详情模态框 -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <!-- 产品详情内容将动态填充 -->
+        </div>
+    </div>
+
+    <!-- 公共页脚组件 -->
+    <div id="footer-placeholder"></div>
+
+    <!-- 引入外部JS文件 -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/mock-data.js"></script>
+    
+    <script>
+        // 全局变量
+        let searchHistory = JSON.parse(localStorage.getItem('honeySearchHistory')) || [];
+        let currentSlideIndex = 0;
+        
+        // 加载公共组件
+        loadComponent('header-placeholder', 'components/header.html');
+        loadComponent('footer-placeholder', 'components/footer.html');
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProductsGrid();
+            initSearchFunction();
+            displaySearchHistory();
+        });
+        
+        // 初始化搜索功能
+        function initSearchFunction() {
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const suggestions = document.getElementById('searchSuggestions');
+            
+            // 输入框获得焦点时显示历史记录
+            searchInput.addEventListener('focus', function() {
+                if (searchHistory.length > 0) {
+                    document.getElementById('searchHistory').classList.remove('hidden');
+                }
+            });
+            
+            // 输入时显示搜索建议
+            searchInput.addEventListener('input', function() {
+                const query = this.value.trim();
+                if (query.length > 0) {
+                    showSearchSuggestions(query);
+                } else {
+                    suggestions.classList.add('hidden');
+                }
+            });
+            
+            // 搜索按钮点击事件
+            searchBtn.addEventListener('click', performSearch);
+            
+            // 回车搜索
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // 点击其他地方隐藏建议框
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('#searchInput') && !e.target.closest('#searchSuggestions')) {
+                    suggestions.classList.add('hidden');
+                    document.getElementById('searchHistory').classList.add('hidden');
+                }
+            });
+        }
+        
+        // 显示搜索建议
+        function showSearchSuggestions(query) {
+            const suggestions = document.getElementById('searchSuggestions');
+            const products = mockData.products;
+            
+            // 过滤相关产品
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(query.toLowerCase()) ||
+                product.origin.toLowerCase().includes(query.toLowerCase()) ||
+                product.type.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            if (filteredProducts.length > 0) {
+                const html = filteredProducts.slice(0, 5).map(product => `
+                    <div class="p-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0" 
+                         onclick="selectSuggestion('${product.name}')">
+                        <div class="flex items-center">
+                            <img src="${product.image}" alt="${product.name}" class="w-12 h-12 object-cover rounded mr-3">
+                            <div>
+                                <p class="font-medium text-gray-900">${product.name}</p>
+                                <p class="text-sm text-gray-600">${product.origin} | ¥${product.price}</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                suggestions.innerHTML = html;
+                suggestions.classList.remove('hidden');
+            } else {
+                suggestions.classList.add('hidden');
+            }
+        }
+        
+        // 选择搜索建议
+        function selectSuggestion(productName) {
+            document.getElementById('searchInput').value = productName;
+            document.getElementById('searchSuggestions').classList.add('hidden');
+            performSearch();
+        }
+        
+        // 执行搜索
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            
+            if (query) {
+                // 添加到搜索历史
+                addToSearchHistory(query);
+                
+                // 根据需求，无论搜索什么都跳转到固定产品页面
+                // 这里我们选择第一个产品作为固定产品
+                const fixedProduct = mockData.products[0];
+                showProductDetail(fixedProduct.id);
+            }
+        }
+        
+        // 添加到搜索历史
+        function addToSearchHistory(query) {
+            if (!searchHistory.includes(query)) {
+                searchHistory.unshift(query);
+                if (searchHistory.length > 10) {
+                    searchHistory = searchHistory.slice(0, 10);
+                }
+                localStorage.setItem('honeySearchHistory', JSON.stringify(searchHistory));
+                displaySearchHistory();
+            }
+        }
+        
+        // 显示搜索历史
+        function displaySearchHistory() {
+            const historyContainer = document.getElementById('historyTags');
+            if (searchHistory.length > 0) {
+                const html = searchHistory.map(term => `
+                    <span class="inline-block bg-honey-100 text-honey-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-honey-200 transition-colors"
+                          onclick="selectHistoryItem('${term}')">
+                        ${term}
+                    </span>
+                `).join('');
+                historyContainer.innerHTML = html;
+            }
+        }
+        
+        // 选择历史搜索项
+        function selectHistoryItem(term) {
+            document.getElementById('searchInput').value = term;
+            performSearch();
+        }
+        
+        // 渲染产品网格
+        function renderProductsGrid() {
+            const grid = document.getElementById('products-grid');
+            
+            mockData.products.forEach(product => {
+                const productCard = createProductCard(product);
+                grid.appendChild(productCard);
+            });
+        }
+        
+        // 创建产品卡片
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'honey-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer';
+            
+            const ecoStars = generateEcoRating(product.ecoRating);
+            
+            card.innerHTML = `
+                <div class="h-48 overflow-hidden">
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-semibold text-gray-900">${product.name}</h3>
+                        <div class="eco-rating flex">
+                            ${ecoStars}
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-600 mb-3">${product.description}</p>
+                    <div class="mb-3">
+                        <div class="flex items-center text-xs text-gray-500 mb-1">
+                            <i class="ri-map-pin-line mr-1"></i>
+                            <span>${product.origin}</span>
+                        </div>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <i class="ri-trophy-line mr-1"></i>
+                            <span>${product.certification}</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-primary font-bold">¥ ${product.price.toFixed(2)}</span>
+                        <div class="space-x-2">
+                            <button class="bg-nature-500 hover:bg-nature-600 text-white px-3 py-1 rounded-button text-xs transition-colors" onclick="showProductDetail(mockData.products[0].id)">
+                                查看详情
+                            </button>
+                            <button class="bg-primary hover:bg-amber-500 text-white px-3 py-1 rounded-button text-xs transition-colors" onclick="addToCart('${product.id}')">
+                                加入购物车
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+        
+        // 显示产品详情（包含溯源信息）
+        function showProductDetail(productId) {
+            const product = mockData.products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const modal = document.getElementById('productModal');
+            const modalContent = modal.querySelector('.modal-content');
+            
+            modalContent.innerHTML = `
+                <div class="relative p-8">
+                    <!-- 关闭按钮 -->
+                    <button onclick="closeProductModal()" class="absolute top-4 right-4 z-50 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-50">
+                        <i class="ri-close-line text-xl"></i>
+                    </button>
+
+                    <!-- 产品基本信息 -->
+                    <section class="mb-12">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">产品基础信息</h2>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div>
+                                <img src="${product.image}" alt="${product.name}" class="w-full h-80 object-cover rounded-lg shadow-lg">
+                            </div>
+                            <div class="space-y-4">
+                                <h3 class="text-2xl font-bold text-gray-900">${product.name}</h3>
+                                <p class="text-gray-600">${product.description}</p>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="bg-honey-50 p-4 rounded-lg">
+                                        <p class="text-sm text-gray-600">蜜源地</p>
+                                        <p class="font-medium">${product.origin}</p>
+                                    </div>
+                                    <div class="bg-nature-50 p-4 rounded-lg">
+                                        <p class="text-sm text-gray-600">蜜种类型</p>
+                                        <p class="font-medium">${product.type}</p>
+                                    </div>
+                                    <div class="bg-blue-50 p-4 rounded-lg">
+                                        <p class="text-sm text-gray-600">认证信息</p>
+                                        <p class="font-medium">${product.certification}</p>
+                                    </div>
+                                    <div class="bg-green-50 p-4 rounded-lg">
+                                        <p class="text-sm text-gray-600">生态评级</p>
+                                        <div class="flex">${generateEcoRating(product.ecoRating)}</div>
+                                    </div>
+                                </div>                                <div class="flex items-center justify-between pt-4">
+                                    <span class="text-3xl font-bold text-primary">¥ ${product.price.toFixed(2)}</span>
+                                    <div class="space-x-3">
+                                        <button onclick="addToCart('${product.id}')" class="bg-nature-500 hover:bg-nature-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                                            <i class="ri-shopping-cart-line mr-1"></i>加入购物车
+                                        </button>
+                                        <button onclick="buyNow('${product.id}')" class="bg-primary hover:bg-honey-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                                            立即购买
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 溯源信息时间轴 -->
+                    <section class="mb-12">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">溯源信息</h2>
+                        <div class="max-w-4xl mx-auto relative timeline">
+                            <div class="timeline-item bg-green-50 text-green-600" data-detail="蜂场采蜜阶段中，蜜蜂和蜂农的精心采集，确保蜂蜜的原始纯净度。蜜源：${product.origin} 的优质花源，蜂群数量：约200箱，气温：25°C，湿度：45%">
+                                <div class="flex items-center">
+                                    <i class="ri-seedling-line text-xl mr-3"></i>
+                                    <div>
+                                        <p class="font-medium">蜂场采蜜 (2024-05-18)</p>
+                                        <p class="text-sm">地点：${product.origin}</p>
+                                        <p class="text-xs mt-1">蜂群状态良好，花期充足</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item bg-blue-50 text-blue-600" data-detail="原蜜检验阶段，采用先进的检测设备进行全面质量把控。水分含量：17.5%，果糖含量：38.2%，pH值：4.2">
+                                <div class="flex items-center">
+                                    <i class="ri-test-tube-line text-xl mr-3"></i>
+                                    <div>
+                                        <p class="font-medium">原蜜检验 (2024-05-19)</p>
+                                        <p class="text-sm">蜂蜜等级：优级品</p>
+                                        <p class="text-xs mt-1">已完成理化指标检测</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item bg-amber-50 text-amber-600" data-detail="低温加工环节，采用专利技术保留蜂蜜原有活性。加工温度：40°C以下，脱水率：2.1%，保留酶活性：95%以上">
+                                <div class="flex items-center">
+                                    <i class="ri-plant-line text-xl mr-3"></i>
+                                    <div>
+                                        <p class="font-medium">低温加工 (2024-05-20)</p>
+                                        <p class="text-sm">工艺：低温脱水</p>
+                                        <p class="text-xs mt-1">保留天然活性成分</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item bg-purple-50 text-purple-600" data-detail="质量检测阶段，进行28项安全指标检测。重金属：未检出，农残：未检出，抗生素：未检出">
+                                <div class="flex items-center">
+                                    <i class="ri-microscope-line text-xl mr-3"></i>
+                                    <div>
+                                        <p class="font-medium">质量检测 (2024-05-21)</p>
+                                        <p class="text-sm">检测项目：28项</p>
+                                        <p class="text-xs mt-1">符合食品安全标准</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item bg-indigo-50 text-indigo-600" data-detail="包装入库环节，采用食品级材料进行真空密封。批次号：${product.id}，保质期：24个月">
+                                <div class="flex items-center">
+                                    <i class="ri-archive-line text-xl mr-3"></i>
+                                    <div>
+                                        <p class="font-medium">包装入库 (2024-05-22)</p>
+                                        <p class="text-sm">批次：${product.id}</p>
+                                        <p class="text-xs mt-1">恒温储存中</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 质检报告 -->
+                    <section class="mb-12">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">质检报告</h2>
+                        <div class="bg-white rounded-lg shadow-lg p-6 max-w-4xl mx-auto">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-4">
+                                    <h4 class="text-lg font-semibold text-gray-900">营养成分</h4>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <div class="flex justify-between text-sm mb-1">
+                                                <span>果糖含量</span>
+                                                <span>38.5%</span>
+                                            </div>
+                                            <div class="h-2 bg-gray-200 rounded">
+                                                <div class="h-full bg-primary rounded" style="width: 78%"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-sm mb-1">
+                                                <span>葡萄糖</span>
+                                                <span>32.1%</span>
+                                            </div>
+                                            <div class="h-2 bg-gray-200 rounded">
+                                                <div class="h-full bg-amber-400 rounded" style="width: 65%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="space-y-4">
+                                    <h4 class="text-lg font-semibold text-gray-900">安全检测</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between">
+                                            <span>重金属</span>
+                                            <span class="font-medium text-green-600">未检出</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span>农药残留</span>
+                                            <span class="font-medium text-green-600">未检出</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span>抗生素</span>
+                                            <span class="font-medium text-green-600">未检出</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 text-center">
+                                <button onclick="downloadReport('${product.id}')" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                                    <i class="ri-download-line mr-2"></i>下载完整检测报告PDF
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 同类推荐 -->
+                    <section>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">同类产品推荐</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            ${getRecommendedProducts(product).map(recommendedProduct => `
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                    <img src="${recommendedProduct.image}" alt="${recommendedProduct.name}" class="w-full h-48 object-cover">
+                                    <div class="p-4">
+                                        <h4 class="font-medium text-gray-900 mb-2">${recommendedProduct.name}</h4>
+                                        <p class="text-sm text-gray-600 mb-3">${recommendedProduct.origin}</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-primary font-bold">¥ ${recommendedProduct.price.toFixed(2)}</span>
+                                            <div class="space-x-2">
+                                                <button onclick="showProductDetail(mockData.products[0].id)" 
+                                                        class="bg-nature-500 hover:bg-nature-600 text-white px-3 py-1 rounded text-sm transition-colors">
+                                                    查看详情
+                                                </button>
+                                                <button onclick="addToCartAndKeepModal('${recommendedProduct.id}')"
+                                                        class="bg-primary hover:bg-honey-600 text-white px-3 py-1 rounded text-sm transition-colors">
+                                                    加入购物车
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+
+                    <!-- 详情提示框 -->
+                    <div id="traceTooltip" class="fixed bg-gray-900 text-white p-3 rounded-lg shadow-lg z-50 hidden">
+                        <p id="tooltipContent"></p>
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.add('show');
+            
+            // 添加时间轴项的交互效果
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    const detail = this.getAttribute('data-detail');
+                    const tooltip = document.getElementById('traceTooltip');
+                    const tooltipContent = document.getElementById('tooltipContent');
+                    tooltipContent.textContent = detail;
+                    tooltip.classList.remove('hidden');
+                    
+                    // 更新tooltip位置
+                    const rect = this.getBoundingClientRect();
+                    tooltip.style.left = rect.right + 20 + 'px';
+                    tooltip.style.top = rect.top + 'px';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    document.getElementById('traceTooltip').classList.add('hidden');
+                });
+            });
+        }
+        
+        // 获取推荐产品
+        function getRecommendedProducts(currentProduct) {
+            return mockData.products
+                .filter(p => p.id !== currentProduct.id && (p.type === currentProduct.type || p.origin === currentProduct.origin))
+                .slice(0, 3);
+        }
+
+        // 下载检测报告
+        function downloadReport(productId) {
+            // 模拟下载
+            alert('正在下载检测报告PDF...');
+            // 这里可以添加实际的下载逻辑
+        }
+        
+        // 加入购物车并保持模态框开启
+        function addToCartAndKeepModal(productId) {
+            addToCart(productId);
+            // 不关闭模态框，允许用户继续浏览
+        }
+        
+        // 关闭产品模态框
+        function closeProductModal() {
+            document.getElementById('productModal').classList.remove('show');
+        }
+        
+        // 点击模态框外部关闭
+        document.getElementById('productModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProductModal();
+            }
+        });
+
+        // 生成生态评级星星
+        function generateEcoRating(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    stars += '<i class="ri-leaf-fill text-green-500"></i>';
+                } else {
+                    stars += '<i class="ri-leaf-line text-gray-300"></i>';
+                }
+            }
+            return stars;
+        }
+        
+        // 立即购买
+        function buyNow(productId) {
+            addToCart(productId);
+            // 跳转到购物车页面
+            window.location.href = 'cart.html';
+        }
+
+        // 加入购物车
+        function addToCart(productId) {
+            // 这里添加购物车逻辑
+            alert('已添加到购物车！');
+        }
+    </script>
+</body>
+</html>

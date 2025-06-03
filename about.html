@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - 蜜养源</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script>
+        tailwind.config={
+            theme:{
+                extend:{
+                    colors:{
+                        primary:'#F2A900',
+                        secondary:'#8BC34A',
+                        honey: {
+                            50: '#FFF8E1',
+                            100: '#FFECB3',
+                            200: '#FFE082',
+                            300: '#FFD54F',
+                            400: '#FFCA28',
+                            500: '#FFC107',
+                            600: '#FFB300',
+                            700: '#FFA000',
+                            800: '#FF8F00',
+                            900: '#FF6F00',
+                        },
+                        nature: {
+                            50: '#F1F8E9',
+                            100: '#DCEDC8',
+                            200: '#C5E1A5',
+                            300: '#AED581',
+                            400: '#9CCC65',
+                            500: '#8BC34A',
+                            600: '#7CB342',
+                            700: '#689F38',
+                            800: '#558B2F',
+                            900: '#33691E',
+                        }
+                    },
+                    borderRadius:{
+                        'none':'0px',
+                        'sm':'4px',
+                        DEFAULT:'8px',
+                        'md':'12px',
+                        'lg':'16px',
+                        'xl':'20px',
+                        '2xl':'24px',
+                        '3xl':'32px',
+                        'full':'9999px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .curved-border {
+            position: relative;
+            overflow: hidden;
+        }
+        .curved-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 3px solid #F2A900;
+            border-radius: 50px 200px 50px 200px;
+            opacity: 0.3;
+        }
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #F2A900, #FFB300);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .custom-shape {
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+        }
+    </style>
+</head>
+<body class="bg-honey-50">
+    <!-- 头部导航 -->
+    <div id="header-placeholder"></div>
+    
+    <!-- 主要跨度横幅 -->
+    <section class="relative min-h-screen overflow-hidden">        <!-- 背景装饰 -->
+        <div class="absolute inset-0" style="background: #fff8e9;">
+            <img src="assets/img/蜂蜜底图.svg" 
+                 alt="蜂蜜背景" 
+                 class="w-full h-full object-contain opacity-80"
+                 style="mix-blend-mode: multiply;">
+            <div class="absolute inset-0 bg-gradient-to-br from-honey-50/50 via-transparent to-nature-50/30"></div>
+        </div>        <!-- 装饰性曲线边框 -->       
+        <!-- 主要内容 -->
+        <div class="relative z-10 container mx-auto px-4 py-36">
+            <!-- 品牌标题 -->
+            <div class="text-center">
+                <h1 class="text-6xl md:text-8xl font-bold gradient-text mb-4 font-serif">蜜养源</h1>
+                <div class="w-32 h-1 bg-primary mx-auto"></div>
+            </div>
+        </div>
+
+        <!-- 品牌故事与使命 -->
+        <div class="relative z-10 container mx-auto px-4 mb-20">
+            <div class="max-w-6xl mx-auto">
+                <div class="relative bg-white bg-opacity-80 backdrop-blur-sm rounded-3xl p-12 shadow-2xl">
+                    <!-- 装饰蜜蜂图标 -->
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center floating-element">
+                            <i class="ri-bug-line text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-8">品牌故事与使命</h2>
+                        <p class="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
+                            蜜养源，以创新为笔，绘就蜂产业新画卷；以合作为墨，书写乡村振兴新篇章。
+                            融合科技与文化，让每一滴蜂蜜都凝聚着蜂农的希望，每一次体验都传递着乡村的魅力，
+                            驱动产业发展，共筑富裕美丽乡村。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 平台特色与价值理念 -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <!-- 背景装饰 -->
+        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-honey-50 to-white"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold gradient-text mb-6">平台特色与价值理念</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-4"></div>
+                <p class="text-gray-600 text-lg">用心构建蜂蜜生态，传承自然之美</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+                <!-- 特色一：全链溯源 -->
+                <div class="group">
+                    <div class="relative bg-gradient-to-br from-honey-100 to-honey-200 rounded-3xl p-8 h-full transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        <!-- 装饰边框 -->
+                        <div class="absolute inset-0 border-2 border-primary border-opacity-30 rounded-3xl transform rotate-1"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-4 floating-element">
+                                    <i class="ri-search-line text-white text-2xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-800">全链溯源</h3>
+                            </div>
+                            <h4 class="text-xl font-semibold text-primary mb-4">见证一滴蜂蜜的纯净之旅</h4>
+                            <p class="text-gray-700 leading-relaxed text-lg">
+                                "每瓶蜂蜜经历 <span class="font-bold text-primary">28 项检测</span>、
+                                <span class="font-bold text-primary">168 小时数据沉淀</span>，
+                                用区块链打破行业'黑箱'，让信任可见可查。"
+                            </p>
+                            <!-- 数据可视化装饰 -->
+                            <div class="mt-6 flex justify-around">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-primary">28</div>
+                                    <div class="text-sm text-gray-600">项检测</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-primary">168</div>
+                                    <div class="text-sm text-gray-600">小时沉淀</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-primary">100%</div>
+                                    <div class="text-sm text-gray-600">可溯源</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 特色二：蜜源认养 -->
+                <div class="group">
+                    <div class="relative bg-gradient-to-br from-nature-100 to-nature-200 rounded-3xl p-8 h-full transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        <div class="absolute inset-0 border-2 border-nature-500 border-opacity-30 rounded-3xl transform -rotate-1"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-nature-500 rounded-full flex items-center justify-center mr-4 floating-element">
+                                    <i class="ri-home-heart-line text-white text-2xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-800">蜜源认养</h3>
+                            </div>
+                            <h4 class="text-xl font-semibold text-nature-700 mb-4">成为蜂蜜的"云养蜂人"</h4>
+                            <p class="text-gray-700 leading-relaxed text-lg">
+                                "认养不是消费，而是与千万蜜蜂共筑生态 —— 你所收到的每一份蜂蜜，
+                                都带着<span class="font-bold text-nature-700">北纬 30° 黄陂花海</span>的阳光与蜂群的辛勤。"
+                            </p>
+                            <div class="mt-6 bg-white bg-opacity-50 rounded-lg p-4">
+                                <div class="flex items-center">
+                                    <i class="ri-map-pin-line text-nature-500 mr-2"></i>
+                                    <span class="text-nature-700 font-medium">北纬 30° 黄陂花海</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 特色三：产业延伸 -->
+                <div class="group">
+                    <div class="relative bg-gradient-to-br from-honey-200 to-honey-300 rounded-3xl p-8 h-full transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        <div class="absolute inset-0 border-2 border-honey-600 border-opacity-30 rounded-3xl transform rotate-1"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-honey-600 rounded-full flex items-center justify-center mr-4 floating-element">
+                                    <i class="ri-leaf-line text-white text-2xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-800">产业延伸</h3>
+                            </div>
+                            <h4 class="text-xl font-semibold text-honey-700 mb-4">社会与生态效益</h4>
+                            <p class="text-gray-700 leading-relaxed text-lg">
+                                "每 <span class="font-bold text-honey-700">100g 蜂蜜</span>，
+                                带动蜂农增收 <span class="font-bold text-honey-700">5 元</span>，
+                                减少农药使用 <span class="font-bold text-honey-700">200g</span>，
+                                让乡村因蜜而兴，让生态因蜂而美。"
+                            </p>
+                            <div class="mt-6 grid grid-cols-3 gap-4">
+                                <div class="text-center bg-white bg-opacity-50 rounded-lg p-3">
+                                    <div class="text-xl font-bold text-honey-700">+5元</div>
+                                    <div class="text-xs text-gray-600">蜂农增收</div>
+                                </div>
+                                <div class="text-center bg-white bg-opacity-50 rounded-lg p-3">
+                                    <div class="text-xl font-bold text-honey-700">-200g</div>
+                                    <div class="text-xs text-gray-600">农药减少</div>
+                                </div>
+                                <div class="text-center bg-white bg-opacity-50 rounded-lg p-3">
+                                    <div class="text-xl font-bold text-honey-700">100%</div>
+                                    <div class="text-xs text-gray-600">生态友好</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 特色四：社交科普 -->
+                <div class="group">
+                    <div class="relative bg-gradient-to-br from-blue-100 to-blue-200 rounded-3xl p-8 h-full transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        <div class="absolute inset-0 border-2 border-blue-500 border-opacity-30 rounded-3xl transform -rotate-1"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mr-4 floating-element">
+                                    <i class="ri-share-line text-white text-2xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-800">社交科普</h3>
+                            </div>
+                            <h4 class="text-xl font-semibold text-blue-700 mb-4">让蜂蜜成为文化载体</h4>
+                            <p class="text-gray-700 leading-relaxed text-lg">
+                                "每一次分享，都是对自然与传统的致敬 —— 当你在朋友圈晒出蜂蜜，
+                                已为蜂业传承种下一颗种子。"
+                            </p>
+                            <div class="mt-6 flex items-center justify-center space-x-4">
+                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <i class="ri-wechat-line text-white"></i>
+                                </div>
+                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <i class="ri-weibo-line text-white"></i>
+                                </div>
+                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <i class="ri-share-forward-line text-white"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据展示区域 -->
+    <section class="py-16 bg-gradient-to-r from-honey-50 via-nature-50 to-honey-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">我们的成就</h2>
+                <p class="text-gray-600">用数据见证蜜养源的成长足迹</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 floating-element">
+                        <i class="ri-home-line text-white text-3xl"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-primary mb-2">50+</div>
+                    <div class="text-gray-600">合作蜂场</div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-nature-500 rounded-full flex items-center justify-center mx-auto mb-4 floating-element" style="animation-delay: 0.5s;">
+                        <i class="ri-user-line text-white text-3xl"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-nature-500 mb-2">10万+</div>
+                    <div class="text-gray-600">用户信赖</div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-honey-600 rounded-full flex items-center justify-center mx-auto mb-4 floating-element" style="animation-delay: 1s;">
+                        <i class="ri-shield-check-line text-white text-3xl"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-honey-600 mb-2">100%</div>
+                    <div class="text-gray-600">溯源保障</div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 floating-element" style="animation-delay: 1.5s;">
+                        <i class="ri-award-line text-white text-3xl"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-blue-500 mb-2">5年+</div>
+                    <div class="text-gray-600">行业经验</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">联系我们</h2>
+                    <p class="text-gray-600 text-lg">期待与您的沟通交流</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- 联系信息 -->
+                    <div class="space-y-6">
+                        <div class="flex items-center p-4 bg-honey-50 rounded-lg">
+                            <i class="ri-map-pin-line text-primary text-2xl mr-4"></i>
+                            <div>
+                                <p class="font-medium text-gray-800">公司地址</p>
+                                <p class="text-gray-600">湖北省武汉市黄陂区蜂蜜产业园</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-nature-50 rounded-lg">
+                            <i class="ri-phone-line text-nature-500 text-2xl mr-4"></i>
+                            <div>
+                                <p class="font-medium text-gray-800">联系电话</p>
+                                <p class="text-gray-600">400-888-8888</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-blue-50 rounded-lg">
+                            <i class="ri-mail-line text-blue-500 text-2xl mr-4"></i>
+                            <div>
+                                <p class="font-medium text-gray-800">邮箱地址</p>
+                                <p class="text-gray-600">contact@miyangyuan.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 留言表单 -->
+                    <div class="bg-gradient-to-br from-honey-50 to-nature-50 rounded-2xl p-8">
+                        <h3 class="text-xl font-semibold mb-6 text-gray-800">在线留言</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <input type="text" placeholder="您的姓名" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                            </div>
+                            <div>
+                                <input type="tel" placeholder="联系电话" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                            </div>
+                            <div>
+                                <textarea rows="4" placeholder="留言内容" 
+                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-primary to-honey-600 hover:from-honey-600 hover:to-primary text-white py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105">
+                                发送留言
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <div id="footer-placeholder"></div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // 加载公共组件
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // 留言表单提交
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('留言已提交成功，我们将在24小时内回复您！');
+            this.reset();
+        });
+
+        // 滚动动画效果
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.group');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animate-fade-in');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

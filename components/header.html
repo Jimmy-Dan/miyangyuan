@@ -1,0 +1,79 @@
+<!-- 公共头部组件 -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+    <nav class="container mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center">
+            <a href="index.html" class="flex items-center">
+                <img src="./assets/img/logo/logo.svg" alt="蜜养源 Logo" class="h-12 md:h-16 w-auto mr-1">
+                <span class="text-3xl font-bold font-['FangSong'] text-primary ml-5">蜜养源</span>
+            </a>
+            <div class="hidden md:flex space-x-8 ml-8">
+                <a href="index.html" class="text-gray-500 hover:text-primary transition-colors" id="nav-home">首页</a>
+                <a href="honey_selection.html" class="text-gray-500 hover:text-primary transition-colors" id="nav-selection">蜜境甄选</a>
+                <a href="honey_cloud.html" class="text-gray-500 hover:text-primary transition-colors" id="nav-cloud">蜜境云游</a>                
+                <a href="honey_trip.html" class="text-gray-500 hover:text-primary transition-colors" id="nav-trip">蜜境逸旅</a>
+                <a href="honey_symbiosis.html" class="text-gray-500 hover:text-primary transition-colors" id="nav-symbiosis">蜜境共生</a>
+                <a href="about.html" class="text-gray-500 hover:text-primary transition-colors" id="nav-about">关于我们</a>
+            </div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <a href="my.html" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary cursor-pointer">
+                <i class="ri-user-line ri-lg"></i>
+            </a>
+            <a href="cart.html" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary cursor-pointer">
+                <i class="ri-shopping-cart-line ri-lg"></i>
+            </a>
+            <div class="w-8 h-8 flex items-center justify-center md:hidden text-gray-700 cursor-pointer" id="mobile-menu-btn">
+                <i class="ri-menu-line ri-lg"></i>
+            </div>
+        </div>
+    </nav>
+    <!-- 移动端菜单 -->
+    <div class="md:hidden bg-white shadow-lg absolute w-full left-0 top-full z-50 hidden" id="mobile-menu">
+        <div class="container mx-auto px-4 py-2">
+            <div class="flex flex-col space-y-3 py-3">
+                <a href="index.html" class="text-gray-800 hover:text-primary py-2 transition-colors">首页</a>
+                <a href="honey_selection.html" class="text-gray-800 hover:text-primary py-2 transition-colors">蜜境甄选</a>
+                <a href="honey_cloud.html" class="text-gray-800 hover:text-primary py-2 transition-colors">蜜境云游</a>                
+                <a href="honey_trip.html" class="text-gray-800 hover:text-primary py-2 transition-colors">蜜境逸旅</a>
+                <a href="honey_symbiosis.html" class="text-gray-800 hover:text-primary py-2 transition-colors">蜜境共生</a>
+                <a href="about.html" class="text-gray-800 hover:text-primary py-2 transition-colors">关于我们</a>
+                <a href="my.html" class="text-gray-800 hover:text-primary py-2 transition-colors">个人中心</a>
+                <a href="cart.html" class="text-gray-800 hover:text-primary py-2 transition-colors">购物车</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    // 获取当前页面路径
+    const currentPage = window.location.pathname.split('/').pop();
+    
+    // 根据当前页面设置导航栏高亮
+    function setActiveNav() {
+        const navLinks = {
+            'index.html': 'nav-home',
+            'honey_selection.html': 'nav-selection',
+            'honey_cloud.html': 'nav-cloud',
+            'honey_trip.html': 'nav-trip',
+            'honey_symbiosis.html': 'nav-symbiosis',
+            'about.html': 'nav-about'
+        };
+        
+        const activeNavId = navLinks[currentPage] || 'nav-home';
+        const activeElement = document.getElementById(activeNavId);
+        
+        if (activeElement) {
+            activeElement.classList.remove('text-gray-500');
+            activeElement.classList.add('text-gray-900', 'font-medium');
+        }
+    }
+    
+    // 移动端菜单切换
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 页面加载后设置活动导航项
+    window.addEventListener('DOMContentLoaded', setActiveNav);
+</script>

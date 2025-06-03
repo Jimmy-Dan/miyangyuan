@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的 - 蜜养源</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script>
+        tailwind.config={
+            theme:{
+                extend:{
+                    colors:{
+                        primary:'#F2A900',
+                        secondary:'#8BC34A',
+                        honey: {
+                            50: '#FFF8E1',
+                            100: '#FFECB3',
+                            200: '#FFE082',
+                            300: '#FFD54F',
+                            400: '#FFCA28',
+                            500: '#FFC107',
+                            600: '#FFB300',
+                            700: '#FFA000',
+                            800: '#FF8F00',
+                            900: '#FF6F00',
+                        },
+                        nature: {
+                            50: '#F1F8E9',
+                            100: '#DCEDC8',
+                            200: '#C5E1A5',
+                            300: '#AED581',
+                            400: '#9CCC65',
+                            500: '#8BC34A',
+                            600: '#7CB342',
+                            700: '#689F38',
+                            800: '#558B2F',
+                            900: '#33691E',
+                        }
+                    },
+                    borderRadius:{
+                        'none':'0px',
+                        'sm':'4px',
+                        DEFAULT:'8px',
+                        'md':'12px',
+                        'lg':'16px',
+                        'xl':'20px',
+                        '2xl':'24px',
+                        '3xl':'32px',
+                        'full':'9999px'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- 头部导航 -->
+    <div id="header-placeholder"></div>
+    
+    <!-- 用户信息区域 -->
+    <section class="py-8 bg-gradient-to-r from-primary to-honey-600">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center space-x-6">
+                <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop" 
+                         alt="用户头像" class="w-16 h-16 rounded-full object-cover">
+                </div>
+                <div class="text-white">
+                    <h2 class="text-2xl font-bold mb-1">张小明</h2>
+                    <p class="text-honey-100">蜜境会员 · VIP用户</p>
+                    <p class="text-honey-100 text-sm">注册时间：2023年3月15日</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要内容区域 -->
+    <section class="py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- 侧边栏导航 -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="p-6">
+                            <h3 class="text-lg font-semibold mb-4">个人中心</h3>
+                            <nav class="space-y-2">
+                                <a href="#assets" class="nav-item active flex items-center space-x-3 p-3 rounded-lg text-primary bg-primary bg-opacity-10">
+                                    <i class="ri-wallet-line"></i>
+                                    <span>个人资产</span>
+                                </a>
+                                <a href="#favorites" class="nav-item flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:text-primary hover:bg-gray-50">
+                                    <i class="ri-bookmark-line"></i>
+                                    <span>溯源收藏夹</span>
+                                </a>
+                                <a href="#orders" class="nav-item flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:text-primary hover:bg-gray-50">
+                                    <i class="ri-shopping-bag-line"></i>
+                                    <span>订单与售后</span>
+                                </a>
+                                <a href="#contribution" class="nav-item flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:text-primary hover:bg-gray-50">
+                                    <i class="ri-leaf-line"></i>
+                                    <span>生态贡献</span>
+                                </a>
+                                <a href="#membership" class="nav-item flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:text-primary hover:bg-gray-50">
+                                    <i class="ri-vip-crown-line"></i>
+                                    <span>会员中心</span>
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 主内容区域 -->
+                <div class="lg:col-span-3">
+                    <!-- 个人资产 -->
+                    <div id="assets" class="content-section">
+                        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                            <h2 class="text-2xl font-bold mb-6">个人资产</h2>
+                            
+                            <!-- 资产概览 -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                                <div class="bg-gradient-to-r from-primary to-honey-600 text-white p-6 rounded-xl">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-honey-100 mb-1">蜜币积分</p>
+                                            <p class="text-2xl font-bold">2,580</p>
+                                        </div>
+                                        <i class="ri-coin-line text-3xl"></i>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-r from-nature-500 to-nature-600 text-white p-6 rounded-xl">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-nature-100 mb-1">NFT凭证</p>
+                                            <p class="text-2xl font-bold">8</p>
+                                        </div>
+                                        <i class="ri-image-line text-3xl"></i>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-xl">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-blue-100 mb-1">认养蜂箱</p>
+                                            <p class="text-2xl font-bold">3</p>
+                                        </div>
+                                        <i class="ri-home-line text-3xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 认养蜂箱状态 -->
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">认养蜂箱状态</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="border border-gray-200 rounded-lg p-4">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <h4 class="font-medium">长白山1号蜂箱</h4>
+                                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">健康</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mb-2">蜂群数量：约5万只</p>
+                                        <p class="text-sm text-gray-600 mb-3">预计产蜜：15kg</p>
+                                        <button class="w-full bg-primary hover:bg-primary-hover text-white py-2 rounded text-sm transition-colors">
+                                            查看详情
+                                        </button>
+                                    </div>
+                                    <div class="border border-gray-200 rounded-lg p-4">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <h4 class="font-medium">黄陂2号蜂箱</h4>
+                                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">健康</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mb-2">蜂群数量：约4.8万只</p>
+                                        <p class="text-sm text-gray-600 mb-3">预计产蜜：12kg</p>
+                                        <button class="w-full bg-primary hover:bg-primary-hover text-white py-2 rounded text-sm transition-colors">
+                                            查看详情
+                                        </button>
+                                    </div>
+                                    <div class="border border-gray-200 rounded-lg p-4">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <h4 class="font-medium">秦岭3号蜂箱</h4>
+                                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">待检查</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mb-2">蜂群数量：约4.2万只</p>
+                                        <p class="text-sm text-gray-600 mb-3">预计产蜜：10kg</p>
+                                        <button class="w-full bg-primary hover:bg-primary-hover text-white py-2 rounded text-sm transition-colors">
+                                            查看详情
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 溯源收藏夹 -->
+                    <div id="favorites" class="content-section hidden">
+                        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-2xl font-bold">溯源收藏夹</h2>
+                                <div class="flex space-x-2">
+                                    <button class="category-btn active bg-primary text-white px-4 py-2 rounded-lg text-sm">全部</button>
+                                    <button class="category-btn bg-gray-100 text-gray-600 px-4 py-2 rounded-lg text-sm">高原蜜</button>
+                                    <button class="category-btn bg-gray-100 text-gray-600 px-4 py-2 rounded-lg text-sm">礼品备选</button>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <div class="flex items-start space-x-4">
+                                        <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=80&h=80&fit=crop" 
+                                             alt="长白山椴树蜜" class="w-16 h-16 rounded-lg object-cover">
+                                        <div class="flex-1">
+                                            <h4 class="font-medium mb-1">长白山椴树蜜</h4>
+                                            <p class="text-sm text-gray-600 mb-2">溯源码：HY202304156789</p>
+                                            <p class="text-sm text-gray-500">收藏时间：2024-03-15</p>
+                                            <div class="flex space-x-2 mt-3">
+                                                <button class="bg-primary hover:bg-primary-hover text-white px-3 py-1 rounded text-xs transition-colors">
+                                                    查看溯源
+                                                </button>
+                                                <button class="border border-gray-300 text-gray-600 px-3 py-1 rounded text-xs hover:bg-gray-50">
+                                                    移除收藏
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <div class="flex items-start space-x-4">
+                                        <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=80&h=80&fit=crop" 
+                                             alt="黄陂荆条蜜" class="w-16 h-16 rounded-lg object-cover">
+                                        <div class="flex-1">
+                                            <h4 class="font-medium mb-1">黄陂荆条蜜</h4>
+                                            <p class="text-sm text-gray-600 mb-2">溯源码：HY202304123456</p>
+                                            <p class="text-sm text-gray-500">收藏时间：2024-03-10</p>
+                                            <div class="flex space-x-2 mt-3">
+                                                <button class="bg-primary hover:bg-primary-hover text-white px-3 py-1 rounded text-xs transition-colors">
+                                                    查看溯源
+                                                </button>
+                                                <button class="border border-gray-300 text-gray-600 px-3 py-1 rounded text-xs hover:bg-gray-50">
+                                                    移除收藏
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 订单与售后 -->
+                    <div id="orders" class="content-section hidden">
+                        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-2xl font-bold">订单与售后</h2>
+                                <div class="flex space-x-2">
+                                    <button class="order-status-btn active bg-primary text-white px-4 py-2 rounded-lg text-sm">全部订单</button>
+                                    <button class="order-status-btn bg-gray-100 text-gray-600 px-4 py-2 rounded-lg text-sm">待付款</button>
+                                    <button class="order-status-btn bg-gray-100 text-gray-600 px-4 py-2 rounded-lg text-sm">待发货</button>
+                                    <button class="order-status-btn bg-gray-100 text-gray-600 px-4 py-2 rounded-lg text-sm">已完成</button>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <!-- 订单1 -->
+                                <div class="border border-gray-200 rounded-lg p-6">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div>
+                                            <h4 class="font-medium">订单号：DD202405301234567</h4>
+                                            <p class="text-sm text-gray-500">下单时间：2024-05-30 14:30</p>
+                                        </div>
+                                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">已完成</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=60&h=60&fit=crop" 
+                                             alt="长白山椴树蜜" class="w-12 h-12 rounded object-cover">
+                                        <div class="flex-1">
+                                            <p class="font-medium">长白山椴树蜜 500g</p>
+                                            <p class="text-sm text-gray-600">数量：2瓶</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="font-medium">¥298</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex space-x-2">
+                                            <button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                                查看物流
+                                            </button>
+                                            <button class="border border-gray-300 text-gray-600 px-4 py-2 rounded-lg text-sm hover:bg-gray-50">
+                                                申请售后
+                                            </button>
+                                        </div>
+                                        <p class="text-lg font-bold">总价：¥298</p>
+                                    </div>
+                                </div>
+
+                                <!-- 订单2 -->
+                                <div class="border border-gray-200 rounded-lg p-6">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div>
+                                            <h4 class="font-medium">订单号：DD202405281234567</h4>
+                                            <p class="text-sm text-gray-500">下单时间：2024-05-28 09:15</p>
+                                        </div>
+                                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">运输中</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=60&h=60&fit=crop" 
+                                             alt="黄陂荆条蜜" class="w-12 h-12 rounded object-cover">
+                                        <div class="flex-1">
+                                            <p class="font-medium">黄陂荆条蜜礼盒装</p>
+                                            <p class="text-sm text-gray-600">数量：1盒</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="font-medium">¥458</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex space-x-2">
+                                            <button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                                查看物流
+                                            </button>
+                                            <button class="border border-gray-300 text-gray-600 px-4 py-2 rounded-lg text-sm hover:bg-gray-50">
+                                                确认收货
+                                            </button>
+                                        </div>
+                                        <p class="text-lg font-bold">总价：¥458</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 生态贡献报告 -->
+                    <div id="contribution" class="content-section hidden">
+                        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                            <h2 class="text-2xl font-bold mb-6">生态贡献报告</h2>
+                            
+                            <!-- 贡献总览 -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                                <div class="bg-gradient-to-r from-nature-500 to-nature-600 text-white p-6 rounded-xl text-center">
+                                    <h3 class="text-lg mb-2">蜂群保护</h3>
+                                    <p class="text-3xl font-bold mb-1">12.5万</p>
+                                    <p class="text-nature-100 text-sm">保护蜜蜂数量（只）</p>
+                                </div>
+                                <div class="bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-xl text-center">
+                                    <h3 class="text-lg mb-2">生态种植</h3>
+                                    <p class="text-3xl font-bold mb-1">2.8</p>
+                                    <p class="text-green-100 text-sm">蜜源植物种植（亩）</p>
+                                </div>
+                                <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-xl text-center">
+                                    <h3 class="text-lg mb-2">碳中和</h3>
+                                    <p class="text-3xl font-bold mb-1">1.2</p>
+                                    <p class="text-blue-100 text-sm">减少碳排放（吨）</p>
+                                </div>
+                            </div>
+
+                            <!-- 贡献图表 -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-semibold mb-4">月度贡献趋势</h3>
+                                <div class="bg-gray-50 rounded-lg p-6 h-64 flex items-center justify-center">
+                                    <p class="text-gray-500">图表展示区域（需要集成图表库）</p>
+                                </div>
+                            </div>
+
+                            <!-- 贡献证书 -->
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">获得证书</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="border border-gray-200 rounded-lg p-4 flex items-center space-x-4">
+                                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center">
+                                            <i class="ri-award-line text-primary text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium">蜂群守护者</h4>
+                                            <p class="text-sm text-gray-600">保护蜜蜂超过10万只</p>
+                                        </div>
+                                    </div>
+                                    <div class="border border-gray-200 rounded-lg p-4 flex items-center space-x-4">
+                                        <div class="w-12 h-12 bg-nature-500 bg-opacity-10 rounded-lg flex items-center justify-center">
+                                            <i class="ri-leaf-line text-nature-500 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium">生态种植者</h4>
+                                            <p class="text-sm text-gray-600">参与蜜源植物种植</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 会员中心 -->
+                    <div id="membership" class="content-section hidden">
+                        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                            <h2 class="text-2xl font-bold mb-6">会员中心</h2>
+                            
+                            <!-- 会员等级 -->
+                            <div class="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white p-6 rounded-xl mb-8">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="text-xl font-bold mb-2">VIP黄金会员</h3>
+                                        <p class="text-yellow-100">享受专属优惠和服务</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-2xl font-bold">2,580</p>
+                                        <p class="text-yellow-100 text-sm">当前积分</p>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <div class="flex justify-between text-sm mb-2">
+                                        <span>距离铂金会员还需要</span>
+                                        <span>1,420积分</span>
+                                    </div>
+                                    <div class="bg-yellow-300 bg-opacity-30 rounded-full h-2">
+                                        <div class="bg-white rounded-full h-2" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 会员权益 -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-semibold mb-4">会员权益</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
+                                        <i class="ri-discount-percent-line text-primary text-xl"></i>
+                                        <div>
+                                            <h4 class="font-medium">专属折扣</h4>
+                                            <p class="text-sm text-gray-600">全场商品9折优惠</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
+                                        <i class="ri-truck-line text-primary text-xl"></i>
+                                        <div>
+                                            <h4 class="font-medium">免费配送</h4>
+                                            <p class="text-sm text-gray-600">全国包邮无门槛</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
+                                        <i class="ri-gift-line text-primary text-xl"></i>
+                                        <div>
+                                            <h4 class="font-medium">生日礼品</h4>
+                                            <p class="text-sm text-gray-600">生日月专属礼品</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
+                                        <i class="ri-customer-service-2-line text-primary text-xl"></i>
+                                        <div>
+                                            <h4 class="font-medium">专属客服</h4>
+                                            <p class="text-sm text-gray-600">VIP专线服务</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 积分记录 -->
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">积分记录</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                                <i class="ri-add-line text-green-600 text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium">购买商品获得积分</p>
+                                                <p class="text-sm text-gray-500">2024-05-30 14:30</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-green-600 font-medium">+298</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                                <i class="ri-add-line text-blue-600 text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium">参与活动奖励</p>
+                                                <p class="text-sm text-gray-500">2024-05-28 10:15</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-blue-600 font-medium">+100</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                                <i class="ri-subtract-line text-red-600 text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium">兑换优惠券</p>
+                                                <p class="text-sm text-gray-500">2024-05-25 16:20</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-red-600 font-medium">-200</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <div id="footer-placeholder"></div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // 加载公共组件
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // 侧边栏导航切换
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 移除所有活动状态
+                document.querySelectorAll('.nav-item').forEach(nav => {
+                    nav.classList.remove('active', 'text-primary', 'bg-primary', 'bg-opacity-10');
+                    nav.classList.add('text-gray-600');
+                });
+                
+                // 添加当前活动状态
+                this.classList.add('active', 'text-primary', 'bg-primary', 'bg-opacity-10');
+                this.classList.remove('text-gray-600');
+                
+                // 隐藏所有内容区域
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.add('hidden');
+                });
+                
+                // 显示对应内容区域
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).classList.remove('hidden');
+            });
+        });
+
+        // 分类按钮切换
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => {
+                    b.classList.remove('active', 'bg-primary', 'text-white');
+                    b.classList.add('bg-gray-100', 'text-gray-600');
+                });
+                this.classList.add('active', 'bg-primary', 'text-white');
+                this.classList.remove('bg-gray-100', 'text-gray-600');
+            });
+        });
+
+        // 订单状态按钮切换
+        document.querySelectorAll('.order-status-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.order-status-btn').forEach(b => {
+                    b.classList.remove('active', 'bg-primary', 'text-white');
+                    b.classList.add('bg-gray-100', 'text-gray-600');
+                });
+                this.classList.add('active', 'bg-primary', 'text-white');
+                this.classList.remove('bg-gray-100', 'text-gray-600');
+            });
+        });
+
+        // 按钮点击事件
+        document.addEventListener('click', function(e) {
+            const buttonText = e.target.textContent.trim();
+            if (['查看详情', '查看溯源', '查看物流', '确认收货'].includes(buttonText)) {
+                alert(`${buttonText}功能正在开发中，请稍后再试！`);
+            }
+            if (buttonText === '移除收藏') {
+                if (confirm('确定要移除这个收藏吗？')) {
+                    e.target.closest('.border').remove();
+                }
+            }
+            if (buttonText === '申请售后') {
+                alert('售后申请已提交，客服将在24小时内联系您！');
+            }
+        });
+    </script>
+</body>
+</html>

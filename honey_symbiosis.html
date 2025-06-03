@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蜜境共生 - 蜜养源</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script>
+        tailwind.config={
+            theme:{
+                extend:{
+                    colors:{
+                        primary:'#F2A900',
+                        secondary:'#8BC34A',
+                        honey: {
+                            50: '#FFF8E1',
+                            100: '#FFECB3',
+                            200: '#FFE082',
+                            300: '#FFD54F',
+                            400: '#FFCA28',
+                            500: '#FFC107',
+                            600: '#FFB300',
+                            700: '#FFA000',
+                            800: '#FF8F00',
+                            900: '#FF6F00',
+                        },
+                        nature: {
+                            50: '#F1F8E9',
+                            100: '#DCEDC8',
+                            200: '#C5E1A5',
+                            300: '#AED581',
+                            400: '#9CCC65',
+                            500: '#8BC34A',
+                            600: '#7CB342',
+                            700: '#689F38',
+                            800: '#558B2F',
+                            900: '#33691E',
+                        }
+                    },
+                    borderRadius:{
+                        'none':'0px',
+                        'sm':'4px',
+                        DEFAULT:'8px',
+                        'md':'12px',
+                        'lg':'16px',
+                        'xl':'20px',
+                        '2xl':'24px',
+                        '3xl':'32px',
+                        'full':'9999px'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- 头部导航 -->
+    <div id="header-placeholder"></div>
+    
+    <!-- 页面顶部 -->
+    <section class="relative h-96 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-nature-500 to-nature-600">
+            <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=1920&h=600&fit=crop" 
+                 alt="蜜境共生" 
+                 class="w-full h-full object-cover opacity-80">
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">蜜境共生</h1>
+                <p class="text-xl md:text-2xl mb-6">携手蜂农，共建生态蜜境，传承非遗文化</p>
+                <button class="bg-primary hover:bg-primary-hover text-white px-8 py-3 rounded-lg text-lg font-medium transition-colors">
+                    立即参与
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 蜂农成长伙伴计划 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">蜂农成长伙伴计划</h2>
+                <p class="text-gray-600 text-lg">助力蜂农发展，共建蜜境生态</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 技能培训 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-graduation-cap-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">技能培训</h3>
+                    <p class="text-gray-600 mb-6">提供现代养蜂技术培训，提升蜂农专业技能</p>
+                    <ul class="text-left text-sm text-gray-600 mb-6">
+                        <li class="flex items-center mb-2">
+                            <i class="ri-check-line text-nature-500 mr-2"></i>
+                            现代养蜂技术培训
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <i class="ri-check-line text-nature-500 mr-2"></i>
+                            蜂产品加工技艺
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <i class="ri-check-line text-nature-500 mr-2"></i>
+                            市场营销技巧
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <i class="ri-check-line text-nature-500 mr-2"></i>
+                            电商运营指导
+                        </li>
+                    </ul>
+                    <button class="w-full bg-primary hover:bg-primary-hover text-white py-3 rounded-lg transition-colors">
+                        申请培训
+                    </button>
+                </div>
+
+                <!-- 资金支持 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+                    <div class="w-16 h-16 bg-nature-500 bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-hand-coin-line text-nature-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">资金支持</h3>
+                    <p class="text-gray-600 mb-6">提供低息贷款和创业基金，助力蜂农扩大经营</p>
+                    <ul class="text-left text-sm text-gray-600 mb-6">
+                        <li class="flex items-center mb-2">
+                            <i class="ri-check-line text-nature-500 mr-2"></i>
+                            创业启动资金
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <i class="ri-check-line text-nature-500 mr-2"></i>
+                            设备升级贷款
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <i class="ri-check-line text-nature-500 mr-2"></i>
+                            扩建蜂场支持
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <i class="ri-check-line text-nature-500 mr-2"></i>
+                            紧急救助基金
+                        </li>
+                    </ul>
+                    <button class="w-full bg-nature-500 hover:bg-nature-600 text-white py-3 rounded-lg transition-colors">
+                        申请资助
+                    </button>
+                </div>
+
+                <!-- 平台推广 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+                    <div class="w-16 h-16 bg-honey-500 bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-megaphone-line text-honey-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">平台推广</h3>
+                    <p class="text-gray-600 mb-6">利用平台流量，帮助蜂农推广优质蜂蜜产品</p>
+                    <ul class="text-left text-sm text-gray-600 mb-6">
+                        <li class="flex items-center mb-2">
+                            <i class="ri-check-line text-nature-500 mr-2"></i>
+                            产品上架推荐
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <i class="ri-check-line text-nature-500 mr-2"></i>
+                            品牌包装设计
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <i class="ri-check-line text-nature-500 mr-2"></i>
+                            营销活动策划
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <i class="ri-check-line text-nature-500 mr-2"></i>
+                            直播带货扶持
+                        </li>
+                    </ul>
+                    <button class="w-full bg-honey-600 hover:bg-honey-700 text-white py-3 rounded-lg transition-colors">
+                        入驻平台
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作成果展示 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">合作成果</h2>
+                <p class="text-gray-600 text-lg">携手共进，成果丰硕</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-bold text-primary mb-3">168</div>
+                    <div class="text-gray-600 text-lg">合作蜂农</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-bold text-nature-500 mb-3">52</div>
+                    <div class="text-gray-600 text-lg">合作蜂场</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-bold text-primary mb-3">2.8万</div>
+                    <div class="text-gray-600 text-lg">培训人次</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-bold text-nature-500 mb-3">1500万</div>
+                    <div class="text-gray-600 text-lg">投入资金(元)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 活动发布区域 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">精彩活动</h2>
+                <p class="text-gray-600 text-lg">参与我们的活动，感受蜂蜜文化的魅力</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 酿蜜大赛 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://www.kedo.net.cn/upload/resources/image/2018/11/22/249242.jpg?1653967458847" 
+                         alt="酿蜜大赛" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <i class="ri-trophy-line text-primary mr-2"></i>
+                            <h3 class="text-xl font-semibold">酿蜜大赛</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">展示传统酿蜜技艺，传承非遗文化精髓</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-gray-500">
+                                <i class="ri-calendar-line mr-1"></i>
+                                6月15日 - 6月16日
+                            </span>
+                            <span class="text-sm text-gray-500">
+                                <i class="ri-map-pin-line mr-1"></i>
+                                黄陂蜂场
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-primary font-semibold">免费参与</span>
+                            <button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg transition-colors">
+                                立即报名
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 荆蜜宴 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://th.bing.com/th/id/R.3ec1b16a221ae3bc703fb92f0b5a3fae?rik=fcF4SWSrCM9BKA&riu=http%3a%2f%2fwww.rongzhounet.com%2fuploadfile%2f2018%2f0830%2f20180830053001177.jpg&ehk=nbpR4uhnEcKyNaU8VbgdhzfvImFVqkRPxypa51zz2zU%3d&risl=&pid=ImgRaw&r=0" 
+                         alt="荆蜜宴" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <i class="ri-restaurant-line text-primary mr-2"></i>
+                            <h3 class="text-xl font-semibold">荆蜜宴</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">品尝传统荆蜜美食，体验地道湖北风味</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-gray-500">
+                                <i class="ri-calendar-line mr-1"></i>
+                                6月20日 - 6月22日
+                            </span>
+                            <span class="text-sm text-gray-500">
+                                <i class="ri-map-pin-line mr-1"></i>
+                                蜜境餐厅
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-primary font-semibold">¥128/人</span>
+                            <button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg transition-colors">
+                                立即预订
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 黄陂花海节 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://th.bing.com/th/id/R.88ecca3eae339fde81965bd393e147b9?rik=%2b2FUXueWDHhsQg&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn17%2f149%2fw640h309%2f20180415%2fa627-fzcyxmu9735265.jpg&ehk=npvcoFnysGLnvwfJjVWx3PPqtvVrZ8VttMbNZzGP5MY%3d&risl=&pid=ImgRaw&r=0" 
+                         alt="黄陂花海节" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <i class="ri-flower-line text-primary mr-2"></i>
+                            <h3 class="text-xl font-semibold">黄陂花海节</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">漫步花海，观赏蜜蜂采蜜，感受自然之美</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-gray-500">
+                                <i class="ri-calendar-line mr-1"></i>
+                                7月1日 - 7月31日
+                            </span>
+                            <span class="text-sm text-gray-500">
+                                <i class="ri-map-pin-line mr-1"></i>
+                                花海景区
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-primary font-semibold">¥50/人</span>
+                            <button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg transition-colors">
+                                购买门票
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 蜂场种植活动 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://th.bing.com/th/id/R.9c19410a4d3cbd4c48039918e35a6fe0?rik=GVQNDml6BJwoyA&riu=http%3a%2f%2fvip-public.people.com.cn%2fphoto%2f2023%2f7%2f26%2f93d7f1275d9e4550b062d8a107056654Xdmi_s.jpg&ehk=%2fOh8Xc28WRfdlZcBSFiMA5kHSQXI0OIvZYrN%2bIdNktk%3d&risl=&pid=ImgRaw&r=0" 
+                         alt="蜂场种植活动" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <i class="ri-plant-line text-primary mr-2"></i>
+                            <h3 class="text-xl font-semibold">蜂场种植活动</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">亲手种植蜜源植物，为蜜蜂提供更好的家园</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-gray-500">
+                                <i class="ri-calendar-line mr-1"></i>
+                                每周六
+                            </span>
+                            <span class="text-sm text-gray-500">
+                                <i class="ri-map-pin-line mr-1"></i>
+                                生态蜂场
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-primary font-semibold">免费参与</span>
+                            <button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg transition-colors">
+                                报名参与
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 蜜蜂保护志愿活动 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://dkxy.fafu.edu.cn/_upload/article/images/d5/62/57d757b94d788352a57b53d63b09/77add1a2-bb62-429c-852c-63b92e570987.jpg" 
+                         alt="蜜蜂保护志愿活动" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <i class="ri-heart-line text-primary mr-2"></i>
+                            <h3 class="text-xl font-semibold">蜜蜂保护志愿活动</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">参与蜜蜂保护行动，守护生态平衡</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-gray-500">
+                                <i class="ri-calendar-line mr-1"></i>
+                                每月第2个周末
+                            </span>
+                            <span class="text-sm text-gray-500">
+                                <i class="ri-map-pin-line mr-1"></i>
+                                各大蜂场
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-primary font-semibold">公益活动</span>
+                            <button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg transition-colors">
+                                成为志愿者
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 非遗技艺传承课堂 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://www.lsol.com.cn/uploadfile/2023/0330/20230330095525887" 
+                         alt="非遗技艺传承课堂" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <i class="ri-book-line text-primary mr-2"></i>
+                            <h3 class="text-xl font-semibold">非遗技艺传承课堂</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">跟随非遗传承人学习传统养蜂技艺</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-gray-500">
+                                <i class="ri-calendar-line mr-1"></i>
+                                每周日
+                            </span>
+                            <span class="text-sm text-gray-500">
+                                <i class="ri-map-pin-line mr-1"></i>
+                                文化中心
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-primary font-semibold">¥99/课时</span>
+                            <button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg transition-colors">
+                                预约学习
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 申请加入 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">申请加入伙伴计划</h2>
+                    <p class="text-gray-600">填写申请信息，我们将尽快与您联系</p>
+                </div>
+                
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">姓名</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的姓名">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">联系电话</label>
+                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入联系电话">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">蜂场地址</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入蜂场详细地址">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">蜂群规模</label>
+                        <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option>请选择蜂群规模</option>
+                            <option>10箱以下</option>
+                            <option>10-50箱</option>
+                            <option>50-100箱</option>
+                            <option>100箱以上</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">需要的帮助</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary">
+                                <span class="ml-2 text-sm text-gray-700">技能培训</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary">
+                                <span class="ml-2 text-sm text-gray-700">资金支持</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary">
+                                <span class="ml-2 text-sm text-gray-700">平台推广</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary">
+                                <span class="ml-2 text-sm text-gray-700">技术指导</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">详细说明</label>
+                        <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请详细描述您的情况和需求"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-primary hover:bg-primary-hover text-white py-3 rounded-lg font-medium transition-colors">
+                        提交申请
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <div id="footer-placeholder"></div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // 加载公共组件
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // 活动按钮点击事件
+        document.addEventListener('click', function(e) {
+            const buttonText = e.target.textContent;
+            if (['立即报名', '立即预订', '购买门票', '报名参与', '成为志愿者', '预约学习'].includes(buttonText)) {
+                alert(`${buttonText}功能正在开发中，请稍后再试！`);
+            }
+            if (['申请培训', '申请资助', '入驻平台'].includes(buttonText)) {
+                alert('申请已提交，我们将尽快与您联系！');
+            }
+        });
+
+        // 表单提交事件
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('申请已提交成功，我们将在3个工作日内与您联系！');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

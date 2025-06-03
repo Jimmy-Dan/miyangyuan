@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蜜境逸旅 - 蜜养源</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script>
+        tailwind.config={
+            theme:{
+                extend:{
+                    colors:{
+                        primary:'#F2A900',
+                        secondary:'#8BC34A',
+                        honey: {
+                            50: '#FFF8E1',
+                            100: '#FFECB3',
+                            200: '#FFE082',
+                            300: '#FFD54F',
+                            400: '#FFCA28',
+                            500: '#FFC107',
+                            600: '#FFB300',
+                            700: '#FFA000',
+                            800: '#FF8F00',
+                            900: '#FF6F00',
+                        },
+                        nature: {
+                            50: '#F1F8E9',
+                            100: '#DCEDC8',
+                            200: '#C5E1A5',
+                            300: '#AED581',
+                            400: '#9CCC65',
+                            500: '#8BC34A',
+                            600: '#7CB342',
+                            700: '#689F38',
+                            800: '#558B2F',
+                            900: '#33691E',
+                        }
+                    },
+                    borderRadius:{
+                        'none':'0px',
+                        'sm':'4px',
+                        DEFAULT:'8px',
+                        'md':'12px',
+                        'lg':'16px',
+                        'xl':'20px',
+                        '2xl':'24px',
+                        '3xl':'32px',
+                        'full':'9999px'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- 头部导航 -->
+    <div id="header-placeholder"></div>
+    
+    <!-- 页面顶部轮播图 -->
+    <section class="relative h-96 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-honey-400 to-honey-600">
+            <img src="assets/img/图片素材/图片素材/图片3.png" 
+                 alt="黄陂蜂文旅" 
+                 class="w-full h-full object-cover opacity-80">
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">蜜境逸旅</h1>
+                <p class="text-xl md:text-2xl mb-6">探索黄陂蜂文旅，感受自然与文化的交融</p>
+                <button class="bg-primary hover:bg-primary-hover text-white px-8 py-3 rounded-lg text-lg font-medium transition-colors">
+                    立即预约
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 黄陂蜂文旅专区 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">黄陂蜂文旅专区</h2>
+                <p class="text-gray-600 text-lg">深度体验蜂蜜文化，感受非遗传承的魅力</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 旅游路线1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://x0.ifengimg.com/cmpp/fck/2020_30/fa48a352adc063b_w1000_h667.jpg" 
+                         alt="蜜源探秘之旅" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">蜜源探秘之旅</h3>
+                        <p class="text-gray-600 mb-4">深入长白山椴树林，实地探访原生态蜜源地，观看蜜蜂采蜜全过程</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-primary">¥299</span>
+                            <span class="text-sm text-gray-500">2天1夜</span>
+                        </div>
+                        <button class="w-full mt-4 bg-primary hover:bg-primary-hover text-white py-2 rounded-lg transition-colors">
+                            立即预订
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 旅游路线2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://www.lsol.com.cn/uploadfile/2023/0330/20230330095525887" 
+                         alt="非遗传承体验" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">非遗传承体验</h3>
+                        <p class="text-gray-600 mb-4">跟随非遗传承人学习传统养蜂技艺，体验古法酿蜜工艺</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-primary">¥199</span>
+                            <span class="text-sm text-gray-500">1天</span>
+                        </div>
+                        <button class="w-full mt-4 bg-primary hover:bg-primary-hover text-white py-2 rounded-lg transition-colors">
+                            立即预订
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 旅游路线3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://picx.zhimg.com/v2-50ffe30ded4e4d127afffdc7f277dd07_720w.jpg?source=172ae18b" 
+                         alt="花海蜂语亲子游" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">花海蜂语亲子游</h3>
+                        <p class="text-gray-600 mb-4">在漫山花海中与孩子一起观察蜜蜂生活，寓教于乐的自然课堂</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-primary">¥159</span>
+                            <span class="text-sm text-gray-500">半天</span>
+                        </div>
+                        <button class="w-full mt-4 bg-primary hover:bg-primary-hover text-white py-2 rounded-lg transition-colors">
+                            立即预订
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 旅游路线4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://th.bing.com/th/id/R.ce49ea6947c836562040252eb0f2865b?rik=okC%2fvWTL8budSg&riu=http%3a%2f%2fn.sinaimg.cn%2ftransform%2f20140603%2fanfzhnw1009659.jpeg&ehk=MKhBKsSaeYreIAi5myBSW%2fRjOSxFtv6XNBflvOVfRm0%3d&risl=&pid=ImgRaw&r=0" 
+                         alt="蜜境禅修之旅" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">蜜境禅修之旅</h3>
+                        <p class="text-gray-600 mb-4">在蜂场的自然环境中进行冥想禅修，感受自然的宁静与和谐</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-primary">¥399</span>
+                            <span class="text-sm text-gray-500">3天2夜</span>
+                        </div>
+                        <button class="w-full mt-4 bg-primary hover:bg-primary-hover text-white py-2 rounded-lg transition-colors">
+                            立即预订
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 旅游路线5 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://th.bing.com/th/id/OIP.DdbBS8CJs1_hijk72DphuAHaE8?rs=1&pid=ImgDetMainhttps://th.bing.com/th/id/OIP.DdbBS8CJs1_hijk72DphuAHaE8?rs=1&pid=ImgDetMain" 
+                         alt="蜜友聚会专线" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">蜜友聚会专线</h3>
+                        <p class="text-gray-600 mb-4">专为蜜友圈用户定制的团建路线，包含荆蜜宴和文化交流活动</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-primary">¥599</span>
+                            <span class="text-sm text-gray-500">2天1夜</span>
+                        </div>
+                        <button class="w-full mt-4 bg-primary hover:bg-primary-hover text-white py-2 rounded-lg transition-colors">
+                            立即预订
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 旅游路线6 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://cdn.pixabay.com/photo/2017/07/19/13/51/image-2519147_1280.jpg" 
+                         alt="摄影采风之旅" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">摄影采风之旅</h3>
+                        <p class="text-gray-600 mb-4">专业摄影师带队，捕捉蜜蜂飞舞、花海绽放的最美瞬间</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-primary">¥459</span>
+                            <span class="text-sm text-gray-500">1天</span>
+                        </div>
+                        <button class="w-full mt-4 bg-primary hover:bg-primary-hover text-white py-2 rounded-lg transition-colors">
+                            立即预订
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 文创产品区域 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">蜜境文创</h2>
+                <p class="text-gray-600 text-lg">将蜂蜜文化融入生活，带走独特的蜜境记忆</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 文创产品1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://th.bing.com/th/id/OIP.whOMHBoTdMtSWoqpvU9qJAHaMU?rs=1&pid=ImgDetMain" 
+                         alt="蜂胶护肤品" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-2">蜂胶护肤套装</h3>
+                        <p class="text-sm text-gray-600 mb-3">天然蜂胶成分，深层滋养肌肤</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-primary">¥299</span>
+                            <button class="bg-primary hover:bg-primary-hover text-white px-4 py-1 rounded text-sm transition-colors">
+                                购买
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 文创产品2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://th.bing.com/th/id/OIP.3ibnRCFlaXe8RTdylubCnwHaF7?rs=1&pid=ImgDetMain" 
+                         alt="蜂巢盲盒" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-2">蜜境盲盒</h3>
+                        <p class="text-sm text-gray-600 mb-3">神秘蜂巢造型，内含限量蜂蜜产品</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-primary">¥99</span>
+                            <button class="bg-primary hover:bg-primary-hover text-white px-4 py-1 rounded text-sm transition-colors">
+                                购买
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 文创产品3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="assets/img/图片素材/图片素材/手办.jpg" 
+                         alt="蜜境手办" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-2">蜜蜂主题手办</h3>
+                        <p class="text-sm text-gray-600 mb-3">可爱蜜蜂造型，黄陂文化元素</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-primary">¥159</span>
+                            <button class="bg-primary hover:bg-primary-hover text-white px-4 py-1 rounded text-sm transition-colors">
+                                购买
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 文创产品4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="assets/img/图片素材/图片素材/介绍蜜境茶具套装.png" 
+                         alt="蜜境茶具" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-2">蜜境茶具套装</h3>
+                        <p class="text-sm text-gray-600 mb-3">蜂巢纹理设计，品茶赏蜜两相宜</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-primary">¥599</span>
+                            <button class="bg-primary hover:bg-primary-hover text-white px-4 py-1 rounded text-sm transition-colors">
+                                购买
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色活动预告 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">近期活动</h2>
+                <p class="text-gray-600 text-lg">精彩活动不容错过，快来参与吧</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 活动1 -->
+                <div class="flex bg-gray-50 rounded-xl overflow-hidden">
+                    <img src="https://x0.ifengimg.com/ucms/2023_09/33ABAEDD5E64B49B97DAE4CACCC7A660BFA4CFF0_size387_w1574_h1049.jpg" 
+                         alt="春季花海节" class="w-32 h-32 object-cover">
+                    <div class="p-6 flex-1">
+                        <h3 class="text-xl font-semibold mb-2">春季花海节</h3>
+                        <p class="text-gray-600 mb-3">万亩花海盛开，与蜜蜂共舞春天</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">3月15日 - 4月15日</span>
+                            <button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded text-sm transition-colors">
+                                了解详情
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 活动2 -->
+                <div class="flex bg-gray-50 rounded-xl overflow-hidden">
+                    <img src="https://th.bing.com/th/id/R.3ec1b16a221ae3bc703fb92f0b5a3fae?rik=fcF4SWSrCM9BKA&riu=http%3a%2f%2fwww.rongzhounet.com%2fuploadfile%2f2018%2f0830%2f20180830053001177.jpg&ehk=nbpR4uhnEcKyNaU8VbgdhzfvImFVqkRPxypa51zz2zU%3d&risl=&pid=ImgRaw&r=0" 
+                         alt="荆蜜美食节" class="w-32 h-32 object-cover">
+                    <div class="p-6 flex-1">
+                        <h3 class="text-xl font-semibold mb-2">荆蜜美食节</h3>
+                        <p class="text-gray-600 mb-3">品尝正宗荆蜜宴，体验舌尖美味</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">5月20日 - 6月22日</span>
+                            <button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded text-sm transition-colors">
+                                了解详情
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <div id="footer-placeholder"></div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // 加载公共组件
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // 预订按钮点击事件
+        document.addEventListener('click', function(e) {
+            if (e.target.textContent === '立即预订' || e.target.textContent === '立即预约') {
+                alert('预订功能正在开发中，请稍后再试！');
+            }
+            if (e.target.textContent === '购买') {
+                alert('商品已添加到购物车！');
+                // 这里可以添加实际的购物车逻辑
+            }
+            if (e.target.textContent === '了解详情') {
+                alert('活动详情页面正在准备中，敬请期待！');
+            }
+        });
+    </script>
+</body>
+</html>

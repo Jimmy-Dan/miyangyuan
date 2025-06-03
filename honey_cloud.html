@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蜜境云游 - 蜜养源</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script>
+        tailwind.config={
+            theme:{
+                extend:{
+                    colors:{
+                        primary:'#F2A900',
+                        secondary:'#8BC34A',
+                        honey: {
+                            50: '#FFF8E1',
+                            100: '#FFECB3',
+                            200: '#FFE082',
+                            300: '#FFD54F',
+                            400: '#FFCA28',
+                            500: '#FFC107',
+                            600: '#FFB300',
+                            700: '#FFA000',
+                            800: '#FF8F00',
+                            900: '#FF6F00',
+                        },
+                        nature: {
+                            50: '#F1F8E9',
+                            100: '#DCEDC8',
+                            200: '#C5E1A5',
+                            300: '#AED581',
+                            400: '#9CCC65',
+                            500: '#8BC34A',
+                            600: '#7CB342',
+                            700: '#689F38',
+                            800: '#558B2F',
+                            900: '#33691E',
+                        }
+                    },
+                    borderRadius:{
+                        'none':'0px',
+                        'sm':'4px',
+                        DEFAULT:'8px',
+                        'md':'12px',
+                        'lg':'16px',
+                        'xl':'20px',
+                        '2xl':'24px',
+                        '3xl':'32px',
+                        'full':'9999px',
+                        'button':'8px'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 公共头部组件 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- 页面头部banner -->
+        <section class="bg-gradient-to-r from-nature-100 to-honey-100 py-16">
+            <div class="container mx-auto px-4">
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">蜜境云游</h1>
+                    <p class="text-lg text-gray-700 max-w-2xl mx-auto">足不出户，云游全球顶级蜜源地，见证蜜蜂的勤劳与大自然的奇迹</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 直播导航 -->
+        <section class="bg-white border-b border-gray-200 sticky top-20 z-40">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex items-center justify-center space-x-8">
+                    <button class="live-nav-btn active px-4 py-2 text-primary border-b-2 border-primary font-medium" data-category="all">
+                        全部直播
+                    </button>
+                    <button class="live-nav-btn px-4 py-2 text-gray-500 hover:text-primary transition-colors" data-category="live">
+                        正在直播
+                    </button>
+                    <button class="live-nav-btn px-4 py-2 text-gray-500 hover:text-primary transition-colors" data-category="scheduled">
+                        预约直播
+                    </button>
+                    <button class="live-nav-btn px-4 py-2 text-gray-500 hover:text-primary transition-colors" data-category="replay">
+                        精彩回放
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 直播间列表 -->
+        <section class="py-8">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6" id="live-streams-grid">
+                    <!-- 直播间将通过JavaScript动态加载 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- VR/AR体验区 -->
+        <section class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">沉浸式VR体验</h2>
+                    <p class="text-lg text-gray-700 max-w-2xl mx-auto">戴上VR眼镜，身临其境感受蜂场的每一个细节</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- VR体验1 -->
+                    <div class="bg-gradient-to-br from-honey-50 to-nature-50 rounded-lg p-6 text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary bg-opacity-10 rounded-full">
+                            <i class="ri-vr-box-line text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">蜂箱内部探秘</h3>
+                        <p class="text-gray-600 mb-4">360度观察蜂箱内部结构，了解蜜蜂的生活习性</p>
+                        <button class="bg-primary hover:bg-amber-500 text-white px-6 py-3 rounded-button transition-colors">
+                            开始体验
+                        </button>
+                    </div>
+
+                    <!-- VR体验2 -->
+                    <div class="bg-gradient-to-br from-nature-50 to-honey-50 rounded-lg p-6 text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary bg-opacity-10 rounded-full">
+                            <i class="ri-flower-line text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">花海采蜜之旅</h3>
+                        <p class="text-gray-600 mb-4">跟随蜜蜂的视角，在漫山花海中寻找最佳花源</p>
+                        <button class="bg-primary hover:bg-amber-500 text-white px-6 py-3 rounded-button transition-colors">
+                            开始体验
+                        </button>
+                    </div>
+
+                    <!-- VR体验3 -->
+                    <div class="bg-gradient-to-br from-honey-50 to-nature-50 rounded-lg p-6 text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary bg-opacity-10 rounded-full">
+                            <i class="ri-microscope-line text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">蜂蜜制作工艺</h3>
+                        <p class="text-gray-600 mb-4">微观视角观察蜜蜂如何将花蜜转化为甘甜蜂蜜</p>
+                        <button class="bg-primary hover:bg-amber-500 text-white px-6 py-3 rounded-button transition-colors">
+                            开始体验
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 互动功能区 -->
+        <section class="py-12 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">实时互动体验</h2>
+                        <p class="text-lg text-gray-700">与蜂农直接对话，参与蜂场管理决策</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- 在线问答 -->
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                                    <i class="ri-question-answer-line text-primary mr-2"></i>
+                                    在线问答
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="bg-gray-50 rounded-lg p-4">
+                                        <p class="text-sm text-gray-600 mb-2">用户提问</p>
+                                        <p class="text-gray-900">这个季节蜜蜂的活跃度如何？</p>
+                                    </div>
+                                    <div class="bg-primary bg-opacity-10 rounded-lg p-4">
+                                        <p class="text-sm text-gray-600 mb-2">蜂农回答</p>
+                                        <p class="text-gray-900">春季是蜜蜂最活跃的时期，现在正值采蜜旺季。</p>
+                                    </div>
+                                    <div class="flex">
+                                        <input type="text" placeholder="输入您的问题..." class="flex-grow px-4 py-2 border border-gray-300 rounded-l-button focus:outline-none focus:ring-2 focus:ring-primary">
+                                        <button class="bg-primary hover:bg-amber-500 text-white px-6 py-2 rounded-r-button">
+                                            发送
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 投票决策 -->
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                                    <i class="ri-vote-line text-primary mr-2"></i>
+                                    参与决策
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="bg-gray-50 rounded-lg p-4">
+                                        <p class="font-medium text-gray-900 mb-3">今天应该将蜂箱移动到哪个花田？</p>
+                                        <div class="space-y-2">
+                                            <label class="flex items-center">
+                                                <input type="radio" name="location" value="lavender" class="mr-2">
+                                                <span>薰衣草花田 (73票)</span>
+                                            </label>
+                                            <label class="flex items-center">
+                                                <input type="radio" name="location" value="sunflower" class="mr-2">
+                                                <span>向日葵花田 (45票)</span>
+                                            </label>
+                                            <label class="flex items-center">
+                                                <input type="radio" name="location" value="clover" class="mr-2">
+                                                <span>苜蓿花田 (28票)</span>
+                                            </label>
+                                        </div>
+                                        <button class="mt-3 bg-primary hover:bg-amber-500 text-white px-4 py-2 rounded-button text-sm">
+                                            投票
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>    <!-- 公共底部组件 -->
+    <div id="footer-placeholder"></div>
+
+    <script src="assets/js/mock-data.js" type="text/javascript"></script>
+    <script>
+        // 确认数据加载
+        console.log('Mock data loaded:', mockData);
+        // 渲染直播列表
+        function renderLiveStreams(apiaries) {
+            const grid = document.getElementById('live-streams-grid');
+            grid.innerHTML = '';
+
+            apiaries.forEach(apiary => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow';
+                card.innerHTML = `
+                    <div class="relative">
+                        <img src="${apiary.thumbnailUrl}" alt="${apiary.name}" class="w-full h-48 object-cover">
+                        ${apiary.isLive ? '<span class="absolute top-3 left-3 bg-red-500 text-white px-2 py-1 rounded text-sm">直播中</span>' : ''}
+                        <span class="absolute top-3 right-3 bg-black bg-opacity-60 text-white px-2 py-1 rounded text-sm">
+                            <i class="ri-eye-line mr-1"></i>${apiary.viewerCount}
+                        </span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">${apiary.name}</h3>
+                        <p class="text-gray-600 mb-2">
+                            <i class="ri-map-pin-line mr-1"></i>${apiary.location}
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <div>
+                                <i class="ri-temp-hot-line mr-1"></i>${apiary.environmentData.temperature}°C
+                                <i class="ri-water-percent-line ml-2 mr-1"></i>${apiary.environmentData.humidity}%
+                            </div>
+                            <div>
+                                <i class="ri-cloud-line mr-1"></i>${apiary.environmentData.weather}
+                            </div>
+                        </div>
+                        <div class="mt-2 text-sm text-gray-500">
+                            <i class="ri-building-2-line mr-1"></i>蜂箱：${apiary.hiveStats.activeHives}/${apiary.hiveStats.totalHives}
+                            <span class="ml-2">活跃度：${apiary.hiveStats.beeActivity}</span>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between">
+                            <span class="text-sm text-gray-500">
+                                <i class="ri-user-line mr-1"></i>${apiary.beekeeper}
+                            </span>
+                            <a href="${apiary.streamUrl}" class="bg-primary text-white px-4 py-1 rounded hover:bg-honey-600 transition-colors">
+                                进入直播间
+                            </a>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 导航按钮点击处理
+        document.querySelectorAll('.live-nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 移除所有按钮的激活状态
+                document.querySelectorAll('.live-nav-btn').forEach(b => {
+                    b.classList.remove('active', 'text-primary', 'border-b-2', 'border-primary');
+                    b.classList.add('text-gray-500');
+                });
+                
+                // 添加当前按钮的激活状态
+                this.classList.add('active', 'text-primary', 'border-b-2', 'border-primary');
+                this.classList.remove('text-gray-500');
+
+                // 根据类别筛选数据
+                const category = this.dataset.category;
+                let filteredApiaries = mockData.apiaries;
+                if (category === 'live') {
+                    filteredApiaries = mockData.apiaries.filter(apiary => apiary.isLive);
+                }
+                // TODO: 添加其他类别的筛选逻辑
+
+                // 重新渲染列表
+                renderLiveStreams(filteredApiaries);
+            });
+        });
+
+        // 初始化加载
+        document.addEventListener('DOMContentLoaded', function() {
+            // 加载头部和底部组件
+            fetch('components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                });
+
+            fetch('components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+
+            // 渲染直播列表
+            if (typeof mockData !== 'undefined' && mockData.apiaries) {
+                renderLiveStreams(mockData.apiaries);
+            } else {
+                console.error('Mock data not loaded properly');
+            }
+        });
+    </script>
+</body>
+</html>
